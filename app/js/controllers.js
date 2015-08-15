@@ -20,7 +20,9 @@ nonoApp.controller('IndexController', ['$scope', '$state', 'LoverRegistryService
       $.getJSON( '../api/email/' + resource.email, function( response ){
         //console.log(response);
         if(response[0].user_id){
-          LoverRegistryService.userId = response[0].user_id;
+          LoverRegistryService.userId = response[0].user_id; //same for this user
+          console.log('LoverRegistry.userId is:');
+          console.log(LoverRegistryService.userId);
           $state.go( 'selectionlogged' );
           $scope.navigation = true;
         }else{
