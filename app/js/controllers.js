@@ -20,6 +20,7 @@ nonoApp.controller('IndexController', ['$scope', '$state', 'LoverRegistryService
       $.getJSON( '../api/email/' + resource.email, function( response ){
         //console.log(response);
         if(response[0].user_id){
+          LoverRegistryService.userId = response[0].user_id;
           $state.go( 'selectionlogged' );
           $scope.navigation = true;
         }else{
@@ -39,7 +40,12 @@ nonoApp.controller('IndexController', ['$scope', '$state', 'LoverRegistryService
       force: true
     }, function(token){
       $scope.googleLogin = false;
-      $scope.navigation = false; //todo needs to differentiate between previously logged or not
+      $scope.navigation = false;
+
+      if(LoverRegistryService.userId != ''){ //todo testing???: needs to differentiate between previously logged or not
+        $scope.navigation = true;
+        $state.go('selectionlogged');
+      }
       $state.go('profilenotlogged');
     });
   });
@@ -49,10 +55,6 @@ nonoApp.controller('IndexController', ['$scope', '$state', 'LoverRegistryService
   });
   $('#selection').click(function() {
     $state.go('selectionlogged'); //set place to selection
-    $scope.navigation = true;
-  });
-  $('#scheduling').click(function() {
-    $state.go('schedulinglogged'); //set place to scheduling???? //todo
     $scope.navigation = true;
   });
   $('#contact').click(function() {
