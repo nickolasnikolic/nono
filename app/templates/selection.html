@@ -1,0 +1,62 @@
+
+<div class="" id="selectionContainer">
+  <div id="filters">
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label>preference</label>
+        <input type='checkbox' name='preference' value='1' checked="checked" ng-init="3" ng-true="1" ng-model="filters.girl">girl</input>
+        <input type='checkbox' name='preference' value='2' checked="checked" ng-init="3" ng-true="2" ng-model="filters.boy">boy</input>
+      </div>
+      <div  class="form-group">
+        <label>age</label>
+        <input type='radio' name='age' value='18-22' ng-init="18-22" ng-model="filters.age">18-22</input>
+        <input type='radio' name='age' value='23-29' ng-model="filters.age">23-29</input>
+        <input type='radio' name='age' value='30-40' ng-model="filters.age">30-40</input>
+        <input type='radio' name='age' value='40-45ish' ng-model="filters.age">45ish</input>
+        <input type='radio' name='age' value='50+' ng-model="filters.age">~50+</input>
+      </div>
+      <div class="form-group">
+        <label>zip</label>
+        <input type='text' class="form-control"  name='location' placeholder='12345' ng-model="filters.zip"></input>
+        <input type='text' class="form-control"  name='distance' placeholder='distance' ng-model="filters.distance"></input>
+      </div>
+      <div class="form-group">
+        <label>education (highest grade attended)</label>
+        <input type='text' class="form-control" name='education' placeholder='12' ng-model="filters.education"></input>
+      </div>
+      <div class="form-group">
+        <label>tags (separated by commas)</label>
+        <input type='text' class="form-control" name='tags' placeholder="tea, crumpets, fish, chips, poutine" ng-model="filters.tags"></input>
+      </div>
+      <div class="form-group">
+        <button type="submit" id="savePreferences" class="btn form-control" >save preferences</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-lg-8 col-lg-offset-5">
+    <div class="lover row" ng-repeat="lover in lovers | filter: philter as nobody">
+      <h3>{{lover.tagline}}</h3>
+      {{lover.bio}}
+      <ul class="lover-stats">
+        <li>
+          gender:
+          <small ng-show="{{lover.gender | ==: 1}}">girl</small>
+          <small ng-show="{{lover.gender | ==: 2}}">boy</small>
+        </li>
+        <li>
+          preference:
+          <small ng-show="{{lover.preference | ==: 1}}">girls</small>
+          <small ng-show="{{lover.preference | ==: 2}}">boys</small>
+          <small ng-show="{{lover.preference | ==: 3}}">both girls and boys</small>
+        </li>
+        <li>age: <small>{{lover.age}}</small></li>
+        <li>mean on this many dates: <small>{{lover.mean}}</small></li>
+        <li>no shows: <small>{{lover.no_shows}}</small></li>
+        <li>no contact: <small>{{lover.no_contacts}}</small></li>
+        <li>tags: <small>{{lover.tags}}</small></li>
+      </ul>
+      <p><a class="user-link hvr-skew" href="#/scheduling/{{lover.user_id}}" ui-sref="schedulinglogged({id:{{lover.user_id}}})">date me</a></p>
+    </div>
+    <p ng-hide="nobody.length != 0">Please choose other filters as no results are available with your current selection.</p>
+  </div>
+</div>

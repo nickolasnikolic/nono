@@ -1,0 +1,97 @@
+<div>
+
+  <form name="profileForm">
+    <section>
+      <div class="row form-group" ng-show="emailView">
+        <label>email</label>
+        <input type="text" class="form-control" name="email" ng-model="lover.email" value="{{userEmail}}" placeholder='you@me.us'></input>
+      </div>
+      <div class="row form-group" ng-show="genderView">
+        <label>gender</label>
+        <input type='radio' name='gender' value='1' ng-model="lover.gender">girl</input>
+        <input type='radio' name='gender' value='2' ng-model="lover.gender">boy</input>
+      </div>
+      <div class="row form-group">
+        <label>preference</label>
+        <input type='radio'  name='preference' value='1' ng-model="lover.preference">girl</input>
+        <input type='radio'  name='preference' value='2' ng-model="lover.preference">boy</input>
+        <input type='radio'  name='preference' value='3' ng-model="lover.preference">girl or boy</input>
+      </div>
+      <div class="row form-group">
+        <label>age</label>
+        <input type='text' class="form-control" name='age' value='' ng-model="lover.age" placeholder="0"></input>
+      </div>
+      <div class="row form-group">
+        <label>zip</label>
+        <input type='text' class="form-control"  name='location'  placeholder='12345' ng-model="lover.zip"></input>
+      </div>
+      <div class="row form-group">
+        <label>education (highest grade attended)</label>
+        <input type='text' class="form-control"  name='education'  placeholder='12' ng-model="lover.education"></input>
+      </div>
+      <div class="row form-group">
+        <label>bio</label>
+        <textarea type='text' class="form-control"  name='bio' ng-model="lover.bio" placeholder='On a dark and story night...'></textarea>
+      </div>
+      <div class="row form-group">
+        <label>tagline</label>
+        <input type="text" class="form-control"  name="tagline" ng-model="lover.tagline" placeholder='Let me do a song and trance with you...'></input>
+      </div>
+      <div class="row form-group">
+        <label>tags (separated by commas)</label>
+        <input type='text' class="form-control"  name='tags'  placeholder='loving, affectionate, sexy' ng-model="lover.tags"></input>
+      </div>
+      <div class="row form-group" ng-show="emailView">
+        <label>coupon code (optional)</label>
+        <input type='text' class="form-control"  name='code' ng-model="lover.code"></input>
+      </div>
+      <div class="row form-group table-responsive">
+        <label>days free to date</label><br />
+        <table class="table">
+          <tr>
+            <td>monday</td>
+            <td>tuesday</td>
+            <td>wednesday</td>
+            <td>thursday</td>
+            <td>friday</td>
+            <td>saturday</td>
+            <td>sunday</td>
+          </tr>
+          <tr>
+            <td><input type='checkbox' name='datableDays' value='monday'  ng-model="lover.datableDays.monday.lunch" ng-true-value="'monday lunch'">lunch</input></td>
+            <td><input type='checkbox' name='datableDays' value='tuesday' ng-model="lover.datableDays.tuesday.lunch" ng-true-value="'tuesday lunch'">lunch</input></td>
+            <td><input type='checkbox' name='datableDays' value='wednesday' ng-model="lover.datableDays.wednesday.lunch" ng-true-value="'wednesday lunch'">lunch</input></td>
+            <td><input type='checkbox' name='datableDays' value='thursday' ng-model="lover.datableDays.thursday.lunch" ng-true-value="'thursday lunch'">lunch</input></td>
+            <td><input type='checkbox' name='datableDays' value='friday' ng-model="lover.datableDays.friday.lunch" ng-true-value="'friday lunch'">lunch</input></td>
+            <td><input type='checkbox' name='datableDays' value='saturday' ng-model="lover.datableDays.saturday.lunch" ng-true-value="'saturday lunch'">lunch</input></td>
+            <td><input type='checkbox' name='datableDays' value='sunday' ng-model="lover.datableDays.sunday.lunch" ng-true-value="'sunday lunch'">lunch</input></td>
+          </tr>
+          <tr>
+            <td><input type='checkbox' name='datableDays' value='monday' ng-model="lover.datableDays.monday.dinner" ng-true-value="'monday dinner'">dinner</input></td>
+            <td><input type='checkbox' name='datableDays' value='tuesday' ng-model="lover.datableDays.tuesday.dinner" ng-true-value="'tuesday dinner'">dinner</input></td>
+            <td><input type='checkbox' name='datableDays' value='wednesday' ng-model="lover.datableDays.wednesday.dinner" ng-true-value="'wednesday dinner'">dinner</input></td>
+            <td><input type='checkbox' name='datableDays' value='thursday' ng-model="lover.datableDays.thursday.dinner" ng-true-value="'thursday dinner'">dinner</input></td>
+            <td><input type='checkbox' name='datableDays' value='friday' ng-model="lover.datableDays.friday.dinner" ng-true-value="'friday dinner'">dinner</input></td>
+            <td><input type='checkbox' name='datableDays' value='saturday' ng-model="lover.datableDays.saturday.dinner" ng-true-value="'saturday dinner'">dinner</input></td>
+            <td><input type='checkbox' name='datableDays' value='sunday' ng-model="lover.datableDays.sunday.dinner" ng-true-value="'sunday dinner'">dinner</input></td>
+          </tr>
+        </table>
+      </div>
+      <section ng-show="bootView">
+        <ul>
+          <li>boots: {{lover.boots}} time(s) <a><small>dispute</small></a></li>
+          <li>mean: {{lover.mean}} time(s)              <a><small>dispute</small></a></li>
+          <li>no shows: {{lover.no_shows}} time(s)       <a><small>dispute</small></a></li>
+          <li>no contacts: {{lover.no_contacts}} time(s) <a><small>dispute</small></a></li>
+          <li>frozen: <span ng-bind-html="frozenHtml"></span>                <a><small>dispute</small></a></li>
+        </ul>
+      </section>
+      <div class="row form-group" ng-show="newLover">
+        <button type="submit" id="submitProfile" class="btn form-control" ng-click="newLove()">proceed to subscription</button>
+      </div>
+      <div class="row form-group" ng-show="updateLover">
+        <button type="submit" id="updateProfile" class="btn form-control" ng-click="updateLove()">update</button>
+      </div>
+    </form>
+  </section>
+</div>
