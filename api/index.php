@@ -159,14 +159,14 @@ $app->get('/scheduling/:loveinterest', function( $loveinterest ){
   $stmt->bindParam(':lover', $loveinterest );
   $stmt->execute();
 
-  $datableDaysResult = $stmt->fetch(PDO::FETCH_ASSOC);
+  $datableDaysResult = $stmt->fetchAll(PDO::FETCH_ASSOC);
   var_dump($datableDaysResult);
     //get filled slots
   $stmt = $db->prepare('SELECT * FROM romantic_dates WHERE asker = :lover OR giver = :lover;');
   $stmt->bindParam(':lover', $loveinterest);
   $stmt->execute();
 
-  $romanticDatesAlreadyPresent = $stmt->fetch(PDO::FETCH_ASSOC);
+  $romanticDatesAlreadyPresent = $stmt->fetchAll(PDO::FETCH_ASSOC);
     //return them
   $sendJson = Array(
       'datableDays' => $datableDaysResult,
