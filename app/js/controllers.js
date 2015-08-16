@@ -374,73 +374,78 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
 
         console.log('askerEventsHolder is: ');
         console.log(askerEventsHolder);
+
+        $.getJSON('../api/scheduling/' + loveInterest)
+            .success(function(data){
+              console.log('data is pulled from loveInterest for scheduling, and it is: ');
+              console.log(data);
+
+              giverDatableDaysString = data.datableDays[0].datable_days.toString();
+              giverEventsHolder.concat( data.datesAsked );
+              giverEventsHolder.concat( data.datesGiven );
+
+              console.log('giverDatableDaysString');
+              console.log(giverDatableDaysString);
+
+              console.log('giverEventsHolder is: ');
+              console.log(giverEventsHolder);
+
+              //format the output into json compatible with fullCalandar
+              var masterEventList = [];
+
+              masterEventList = masterEventList.concat( askerEventsHolder, giverEventsHolder );
+              //todo hack le`disgust but more work needed, etc
+
+              /*
+               It should follow the following template:
+
+               [{
+               id: 999,
+               title: 'datable',
+               start: '2015-07-09T16:00:00'
+               }, {
+               id: 998,
+               title: 'datable',
+               start: '2015-07-16T16:00:00',
+               end: '2015-07-17T21:00:00'
+               }]
+               */
+
+              //display it
+              $('#calendar').fullCalendar({
+                theme: true,
+                header: {
+                  right: 'prev,next,today'
+                },
+                buttonText: {
+                  today: 'today',
+                  month: 'month',
+                  week: 'week',
+                  day: 'day',
+                  next: '>',
+                  prev: '<'
+                },
+                editable: true,
+                eventLimit: true, // allow "more" link when too many events
+
+                events: masterEventList, //todo massage this data more before inserting...
+
+                dayClick: function(e) {
+                  console.log(e);
+                  console.log(moment(e._d).fromNow());
+                }
+              });
+
+            })
+            .error(function(error){
+              console.log('There has been an error in getting loveInterests dates, and it is...:');
+              console.log(error);
+            });
       })
       .error(function(error){
         console.log('There has been an error in getting user dates, and it is...:');
         console.log(error);
       });
-  $.getJSON('../api/scheduling/' + loveInterest)
-      .success(function(data){
-        console.log('data is pulled from loveInterest for scheduling, and it is: ');
-        console.log(data);
-
-        giverDatableDaysString = data.datableDays[0].datable_days.toString();
-        giverEventsHolder.concat( data.datesAsked );
-        giverEventsHolder.concat( data.datesGiven );
-
-        console.log('giverDatableDaysString');
-        console.log(giverDatableDaysString);
-
-        console.log('giverEventsHolder is: ');
-        console.log(giverEventsHolder);
-      })
-      .error(function(error){
-        console.log('There has been an error in getting loveInterests dates, and it is...:');
-        console.log(error);
-      });
-  //format the output into json compatible with fullCalandar
-
-  //todo hack le`disgust but more work needed, etc
-
-  /*
-    It should follow the following template:
-
-   [{
-   id: 999,
-   title: 'datable',
-   start: '2015-07-09T16:00:00'
-   }, {
-   id: 998,
-   title: 'datable',
-   start: '2015-07-16T16:00:00',
-   end: '2015-07-17T21:00:00'
-   }]
-  */
-
-  //display it
-  $('#calendar').fullCalendar({
-    theme: true,
-    header: {
-      right: 'prev,next,today'
-    },
-    buttonText: {
-      today: 'today',
-      month: 'month',
-      week: 'week',
-      day: 'day',
-      next: '>',
-      prev: '<'
-    },
-    editable: true,
-    eventLimit: true, // allow "more" link when too many events
-
-    events: [], //todo massage this data more before inserting...
-
-    dayClick: function(e) {
-      console.log(e);
-      console.log(moment(e._d).fromNow());
-    }
-  });
 
   //format it
   //react to user interaction
