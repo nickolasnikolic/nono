@@ -648,9 +648,7 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
                 date.messages = data.messages;
               });
         });
-      })
-      .error(function(error){ console.log(error); });
-
+      });
 
   $scope.saveMessage = function( id, asker, giver ){
 
