@@ -489,6 +489,36 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
               datableDaysArray = _.pairs(datableDays);
 
               console.log(datableDaysArray);
+              var formattedDatableDaysArray = [];
+              foreach( day in datableDaysArray){
+                if(day.breakfast){
+                  formattedDatableDaysArray.push(
+                      {
+                        'start': '07:00:00',
+                        'end': '11:00:00',
+                        'rendering': 'background'
+                      }
+                  );
+                }
+                if(day.lunch){
+                  formattedDatableDaysArray.push(
+                      {
+                        'start': '11:00:00',
+                        'end': '16:00:00',
+                        'rendering': 'background'
+                      }
+                  );
+                }
+                if(day.dinner){
+                  formattedDatableDaysArray.push(
+                      {
+                        'start': '16:00:00',
+                        'end': '24:00:00',
+                        'rendering': 'background'
+                      }
+                  );
+                }
+              }
 
               //display it
               $('#calendar').fullCalendar({
