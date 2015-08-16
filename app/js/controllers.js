@@ -392,7 +392,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
   console.log(askerEventsHolder);
   console.log('giverEventsHolder is: ');
   console.log(giverEventsHolder);
-  var eventsArray = eventsHolder;
+
   /*
     It should follow the following template:
 
