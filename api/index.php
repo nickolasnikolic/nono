@@ -246,7 +246,7 @@ $app->get('/itinerary/messages/:dateid', function($dateid){
   $result = $stmt->fetchAll(PDO::FETCH_BOTH);
 
   //display confirmation
-  echo json_encode($result);
+  echo json_encode(array($result));//todo hack in case of single result bug
 });
 
 $app->post('/itinerary/messages/:dateid', function( $dateid ){
