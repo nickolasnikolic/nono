@@ -500,6 +500,18 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                         'color': '#009900'
                       }
                   );
+                }else{
+                  formattedDatableDaysArray.push(
+                      {
+                        'title': 'breakfast date',
+                        'start': '07:00:00',
+                        'end': '11:00:00',
+                        'rendering': 'background',
+                        overlap: true,
+                        'dow': [day],
+                        'color': '#990000'
+                      }
+                  );
                 }
                 if(value[1].lunch == true){
                   formattedDatableDaysArray.push(
@@ -513,6 +525,18 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                         'color': '#009900'
                       }
                   );
+                }else{
+                  formattedDatableDaysArray.push(
+                      {
+                        'title': 'lunch date',
+                        'start': '11:00:00',
+                        'end': '16:00:00',
+                        'rendering': 'background',
+                        overlap: true,
+                        'dow': [day],
+                        'color': '#990000'
+                      }
+                  );
                 }
                 if(value[1].dinner == true){
                   formattedDatableDaysArray.push(
@@ -524,6 +548,18 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                         overlap: true,
                         'dow': [day],
                         'color': '#009900'
+                      }
+                  );
+                }else{
+                  formattedDatableDaysArray.push(
+                      {
+                        'title': 'dinner date',
+                        'start': '16:00:00',
+                        'end': '24:00:00',
+                        'rendering': 'background',
+                        overlap: true,
+                        'dow': [day],
+                        'color': '#990000'
                       }
                   );
                 }
