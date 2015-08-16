@@ -243,20 +243,20 @@ $app->get('/itinerary/messages/:dateid', function($dateid){
 
   $stmt->execute();
 
-  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  $result = $stmt->fetchAll(PDO::FETCH_BOTH);
 
   //display confirmation
   echo json_encode($result);
 });
 
-$app->post('/itinerary/messages/:dateId', function( $dateId ){
+$app->post('/itinerary/messages/:dateid', function( $dateid ){
 
   $note = $_POST['message'];
 
   //send a love note
   $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
-  $stmt = $db->prepare('INSERT INTO lovenotes (note_id, note) VALUES (:dateId, :note);');
-  $stmt->bindParam(':dateId', $dateId);
+  $stmt = $db->prepare('INSERT INTO lovenotes (note_id, note) VALUES (:dateid, :note);');
+  $stmt->bindParam(':dateid', $dateid);
   $stmt->bindParam(':note', $note);
 
   $stmt->execute();
