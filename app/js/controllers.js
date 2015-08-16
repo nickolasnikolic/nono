@@ -59,6 +59,10 @@ nonoApp.controller('IndexController', ['$scope', '$state', 'LoverRegistryService
     $state.go('selectionlogged'); //set place to selection
     $scope.navigation = true;
   });
+  $('#itinerary').click(function() {
+    $state.go('itinerarylogged'); //set place to selection
+    $scope.navigation = true;
+  });
   $('#contact').click(function() {
     $state.go('contact'); //set place to contact
     $scope.navigation = true;
@@ -633,7 +637,8 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
 
   $.getJSON('../api/itinerary/' + LoverRegistryService.userId)
       .success(function(data){
-
+        $scope.dates = data;
+        $scope.$apply();
       })
       .error(function(error){ console.log(error); });
 }])
