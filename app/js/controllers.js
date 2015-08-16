@@ -359,6 +359,8 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
       .success(function(data){
         console.log('data is pulled for scheduling, and it is: ');
         console.log(data);
+
+        eventsHolder.push( data.datesAsked );
       })
       .error(function(error){
         console.log('There has been an error, and it is...:');
@@ -368,12 +370,32 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
       .success(function(data){
         console.log('data is pulled for scheduling, and it is: ');
         console.log(data);
+
+        eventsHolder.push( data.datesGiven );
       })
       .error(function(error){
         console.log('There has been an error, and it is...:');
         console.log(error);
       });
   //format the output into json compatible with fullCalandar
+
+  //todo hack le`disgust but more work needed, etc
+  var eventsArray = _.flatten( eventsHolder );
+
+  /*
+    It should follow the following template:
+
+   [{
+   id: 999,
+   title: 'datable',
+   start: '2015-07-09T16:00:00'
+   }, {
+   id: 998,
+   title: 'datable',
+   start: '2015-07-16T16:00:00',
+   end: '2015-07-17T21:00:00'
+   }]
+  */
 
   //display it
   $('#calendar').fullCalendar({
@@ -391,16 +413,9 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
     },
     editable: true,
     eventLimit: true, // allow "more" link when too many events
-    events: [{
-      id: 999,
-      title: 'datable',
-      start: '2015-07-09T16:00:00'
-    }, {
-      id: 998,
-      title: 'datable',
-      start: '2015-07-16T16:00:00',
-      end: '2015-07-17T21:00:00'
-    }],
+
+    events: eventsArray, //todo massage this data more before inserting...
+
     dayClick: function(e) {
       console.log(e);
       console.log(moment(e._d).fromNow());
