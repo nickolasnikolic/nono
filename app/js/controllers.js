@@ -426,6 +426,8 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                 },
                 editable: true,
                 eventLimit: true, // allow "more" link when too many events
+                eventBackgroundColor: 'transparent',
+                eventBorderColor: 'black',
 
                 events: formattedEventList, //todo massage this data more before inserting...
 
