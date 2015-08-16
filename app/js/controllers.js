@@ -489,38 +489,43 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
               datableDaysArray = _.pairs(datableDays);
 
               var formattedDatableDaysArray = [];
-              _.each(datableDaysArray, function(day){
-                if(day.breakfast){
+              _.each(datableDaysArray, function(value, day){
+                if(value.breakfast){
                   formattedDatableDaysArray.push(
                       {
                         'start': '07:00:00',
                         'end': '11:00:00',
-                        'rendering': 'background'
+                        'rendering': 'background',
+                        'dow': day
                       }
                   );
                 }
-                if(day.lunch){
+                if(value.lunch){
                   formattedDatableDaysArray.push(
                       {
                         'start': '11:00:00',
                         'end': '16:00:00',
-                        'rendering': 'background'
+                        'rendering': 'background',
+                        'dow': day
                       }
                   );
                 }
-                if(day.dinner){
+                if(value.dinner){
                   formattedDatableDaysArray.push(
                       {
                         'start': '16:00:00',
                         'end': '24:00:00',
-                        'rendering': 'background'
+                        'rendering': 'background',
+                        'dow': day
                       }
                   );
                 }
               });
 
               //form the final listing
-              formattedEventList = formattedEventList.concat(formattedDatableDaysArray);
+              var finalEventList = formattedEventList.concat(formattedDatableDaysArray);
+
+              console.log(finalEventList);
 
               //display it
               $('#calendar').fullCalendar({
@@ -541,7 +546,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                 eventBackgroundColor: 'black',
                 eventBorderColor: 'black',
 
-                events: formattedEventList, //todo massage this data more before inserting...
+                events: finalEventList, //todo massage this data more before inserting...
 
                 dayClick: function(e) {
                   console.log(e);
