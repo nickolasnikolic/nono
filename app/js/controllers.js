@@ -364,7 +364,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
         console.log('data is pulled for scheduling from the current lover, and it is: ');
         console.log(data);
 
-        askerDatableDaysString = data.datableDays[0].datable_Days;
+        askerDatableDaysString = data.datableDays[0].datable_days;
         askerEventsHolder.concat( data.datesAsked );
         askerEventsHolder.concat( data.datesGiven );
       })
@@ -377,7 +377,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
         console.log('data is pulled from loveInterest for scheduling, and it is: ');
         console.log(data);
 
-        giverDatableDaysString = data.datableDays[0].datable_Days;
+        giverDatableDaysString = data.datableDays[0].datable_days;
         giverEventsHolder.concat( data.datesAsked );
         giverEventsHolder.concat( data.datesGiven );
       })
