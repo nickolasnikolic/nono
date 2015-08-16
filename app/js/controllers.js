@@ -495,7 +495,8 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                         'end': '11:00:00',
                         'rendering': 'background',
                         overlap: true,
-                        'dow': [day]
+                        'dow': [day],
+                        'color': '#009900'
                       }
                   );
                 }
@@ -506,7 +507,8 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                         'end': '16:00:00',
                         'rendering': 'background',
                         overlap: true,
-                        'dow': [day]
+                        'dow': [day],
+                        'color': '#009900'
                       }
                   );
                 }
@@ -517,7 +519,8 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                         'end': '24:00:00',
                         'rendering': 'background',
                         overlap: true,
-                        'dow': [day]
+                        'dow': [day],
+                        'color': '#009900'
                       }
                   );
                 }
