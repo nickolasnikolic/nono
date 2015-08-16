@@ -523,6 +523,8 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                 }
               });
 
+              console.log(formattedDatableDaysArray);
+
               //form the final listing
               var finalEventList = formattedEventList.concat(formattedDatableDaysArray);
 
