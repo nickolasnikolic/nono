@@ -352,7 +352,9 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
   var loverUser = LoverRegistryService.userId;
   var loveInterest = $stateParams.loveInterest;
 
-  var eventsHolder = [];
+  var askerEventsHolder = [];
+  var giverEventsHolder = [];
+
   var askerDatableDaysString = '';
   var giverDatableDaysString = '';
 
@@ -363,8 +365,8 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
         console.log(data);
 
         askerDatableDaysString = data.datableDays[0];
-        eventsHolder.push( data.datesAsked );
-        eventsHolder.push( data.datesGiven );
+        askerEventsHolder.concat( data.datesAsked );
+        askerEventsHolder.concat( data.datesGiven );
       })
       .error(function(error){
         console.log('There has been an error in getting user dates, and it is...:');
@@ -376,8 +378,8 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
         console.log(data);
 
         giverDatableDaysString = data.datableDays[0];
-        eventsHolder.push( data.datesAsked );
-        eventsHolder.push( data.datesGiven );
+        giverEventsHolder.concat( data.datesAsked );
+        giverEventsHolder.concat( data.datesGiven );
       })
       .error(function(error){
         console.log('There has been an error in getting loveInterest\'s dates, and it is...:');
