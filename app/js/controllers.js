@@ -411,21 +411,6 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                 } );
               } );
 
-              /*
-               It should follow the following template:
-
-               [{
-               id: 999,
-               title: 'datable',
-               start: '2015-07-09T16:00:00'
-               }, {
-               id: 998,
-               title: 'datable',
-               start: '2015-07-16T16:00:00',
-               end: '2015-07-17T21:00:00'
-               }]
-               */
-
               //display it
               $('#calendar').fullCalendar({
                 theme: true,
@@ -443,7 +428,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                 editable: true,
                 eventLimit: true, // allow "more" link when too many events
 
-                events: masterEventList, //todo massage this data more before inserting...
+                events: formattedEventList, //todo massage this data more before inserting...
 
                 dayClick: function(e) {
                   console.log(e);
