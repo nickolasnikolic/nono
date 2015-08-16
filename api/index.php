@@ -228,14 +228,41 @@ $app->get('/itinerary/:lover', function($lover){
 
   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-  //schedule an email to both participants leading to date rating page /todo
+  //schedule an email to both participants leading to date rating page //todo
 
   //display confirmation
   echo json_encode($result);
 });
 
-$app->post('/itinerary/:date/:lover', function( $date, $lover ){
-  //update the database record for the participants' date
+
+$app->get('/itinerary/messages/:dateid', function($dateid){
+  //just display itinerary page
+  $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
+  $stmt = $db->prepare('SELECT * FROM lovenotes WHERE date_id = :dateid;');
+  $stmt->bindParam(':dateid', $dateid);
+
+  $stmt->execute();
+
+  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+  //display confirmation
+  echo json_encode($result);
+});
+
+$app->post('/itinerary/messages/:dateId', function( $dateId ){
+
+  $note = $_POST['message'];
+
+  //send a love note
+  $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
+  $stmt = $db->prepare('INSERT INTO lovenotes (note_id, note) VALUES (:dateId, :note);');
+  $stmt->bindParam(':dateId', $dateId);
+  $stmt->bindParam(':note', $note);
+
+  $stmt->execute();
+
+  //display confirmation
+  echo json_encode($_POST);
 });
 
 $app->post('/contact', function(){
