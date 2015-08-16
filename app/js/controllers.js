@@ -594,7 +594,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                 events: finalEventList,
 
                 dayClick: function(e) {
-                  console.log(moment(e.d).format());
+                  console.log(moment(e.d).format('YYYY-MM-DD HH:hh:ss'));
                 },
                 eventClick: function(e){
                   //schedule a date //todo gitter done...
