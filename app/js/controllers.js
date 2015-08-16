@@ -309,7 +309,7 @@ nonoApp.controller('SelectionController', ['$scope', function($scope) {
         var radius = $scope.filters.distance / 30;
         //allow - right to left -  zip digits to change based on that number
         if(radius >= 2){
-          //do something with the zip, otherwise, for now ignore it for further
+          //do something with the zip, otherwise, for now ignore it for further //todo zip is broken
           //testing, heh, heh, heh...
           console.log('big radius');
           var searchString = $scope.filters.zip.substr(5-radius);
@@ -346,8 +346,17 @@ nonoApp.controller('SchedulingController', ['$scope', function($scope) {
   document.title = 'nono - scheduling'; //set the page title
   $scope.navigation = true;
   $scope.googleLogin = false;
-
+  var loveInterest = '1'
   //pull from database the records of dates and undateable days
+  $.getJSON('../api/scheduling/' + loveInterest)
+      .success(function(data){
+        console.log('data is pulled for scheduling, and it is: ');
+        console.log(data);
+      })
+      .error(function(error){
+        console.log('There has been an error, and it is...:');
+        console.log(error);
+      });
   //format the output into json compatible with fullCalandar
 
   //display it
