@@ -637,7 +637,6 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
 
   $.getJSON('../api/itinerary/' + LoverRegistryService.userId)
       .success(function(data){
-        console.log(data);
         $scope.dates = data;
         $scope.$apply();
       })
@@ -657,11 +656,10 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
   $scope.saveMessage = function( id, index, loveText){
 
     var message = {};
-    console.log(loveText);
     message.message = loveText;
     $scope.dates[index].messages.push( { 'note':loveText } );
 
-    $.post( '../api/itinerary/messages/' + id, message );
+    $.post( '../api/itinerary/messages/' + id, message, function(data){ console.log(data); } );
   };
 
 }])
