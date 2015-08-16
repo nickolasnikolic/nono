@@ -402,7 +402,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
               _.each( masterEventList, function( element ){
                 formattedEventList.push( {
                   'id': element.romantic_date_id,
-                  'title': 'set date',
+                  'title': ' >>> a set date',
                   'start': element.date_start,
                   'end': element.date_end //todo add date end to db entry for here
                 } );
