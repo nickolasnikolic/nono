@@ -14,7 +14,7 @@
         <li>did the date show up? <a id="dateGood">yes</a> <a id="dateNotGood">no</a></li>
         <hr />
         <li>send a quick message to this user (for instance suggest a place to go):</li>
-        <li><form><input type="text" ng-model="messages"></input></form></li>
+        <li><form><input type="text" ng-model="messages"></input><button>save</button></form></li>
         <li ng-bind="messages" ng-click="saveMessage(date.giver,date.asker)">{{message}}</li>
       </ul>
     </div>
