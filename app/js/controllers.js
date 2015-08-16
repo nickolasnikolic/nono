@@ -491,6 +491,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                 if(value[1].breakfast == true){
                   formattedDatableDaysArray.push(
                       {
+                        'title': 'breakfast date',
                         'start': '07:00:00',
                         'end': '11:00:00',
                         'rendering': 'background',
@@ -503,6 +504,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                 if(value[1].lunch == true){
                   formattedDatableDaysArray.push(
                       {
+                        'title': 'lunch date',
                         'start': '11:00:00',
                         'end': '16:00:00',
                         'rendering': 'background',
@@ -515,6 +517,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                 if(value[1].dinner == true){
                   formattedDatableDaysArray.push(
                       {
+                        'title': 'dinner date',
                         'start': '16:00:00',
                         'end': '24:00:00',
                         'rendering': 'background',
