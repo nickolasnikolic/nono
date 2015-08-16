@@ -489,7 +489,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
 
               _.each(datableDaysArray, function(value, day){
 
-                if(value.breakfast){
+                if(value.breakfast == true){
                   formattedDatableDaysArray.push(
                       {
                         'start': '07:00:00',
@@ -499,7 +499,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                       }
                   );
                 }
-                if(value.lunch){
+                if(value.lunch == true){
                   formattedDatableDaysArray.push(
                       {
                         'start': '11:00:00',
@@ -509,7 +509,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                       }
                   );
                 }
-                if(value.dinner){
+                if(value.dinner == true){
                   formattedDatableDaysArray.push(
                       {
                         'start': '16:00:00',
@@ -520,8 +520,6 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                   );
                 }
               });
-
-              console.log(formattedDatableDaysArray);
 
               //form the final listing
               var finalEventList = formattedEventList.concat(formattedDatableDaysArray);
