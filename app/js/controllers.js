@@ -484,7 +484,11 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
               }if(giverDatableDaysString.indexOf( 'sunday dinner' ) != -1 ){
                 datableDays.sunday.dinner = true;
               }
-              console.log(datableDays);
+              //console.log(datableDays);
+
+              datableDaysArray = _.pairs(datableDays);
+
+              console.log(datableDaysArray);
 
               //display it
               $('#calendar').fullCalendar({
