@@ -364,7 +364,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
         console.log('data is pulled for scheduling from the current lover, and it is: ');
         console.log(data);
 
-        askerDatableDaysString = data.datableDays[0].datable_days;
+        askerDatableDaysString = JSON.parse(data.datableDays[0].datable_days);
         askerEventsHolder.concat( data.datesAsked );
         askerEventsHolder.concat( data.datesGiven );
       })
