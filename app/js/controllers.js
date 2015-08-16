@@ -382,7 +382,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
         giverEventsHolder.concat( data.datesGiven );
       })
       .error(function(error){
-        console.log('There has been an error in getting loveInterest\'s dates, and it is...:');
+        console.log('There has been an error in getting loveInterests dates, and it is...:');
         console.log(error);
       });
   //format the output into json compatible with fullCalandar
