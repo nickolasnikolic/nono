@@ -657,6 +657,7 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
   $scope.saveMessage = function( id, index, loveText){
 
     var message = {};
+    console.log(loveText);
     message.message = loveText;
     $scope.dates[index].messages.push( { 'note':loveText } );
 
