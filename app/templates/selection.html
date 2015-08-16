@@ -55,7 +55,7 @@
         <li>no contact: <small>{{lover.no_contacts}}</small></li>
         <li>tags: <small>{{lover.tags}}</small></li>
       </ul>
-      <p><a class="user-link hvr-skew" href="#/scheduling/{{lover.user_id}}" ui-sref="schedulinglogged({id:{{lover.user_id}}})">date me</a></p>
+      <p><a class="user-link hvr-skew" ng-href="#/scheduling/{{lover.user_id}}">date me</a></p>
     </div>
     <p ng-hide="nobody.length != 0">Please choose other filters as no results are available with your current selection.</p>
   </div>
