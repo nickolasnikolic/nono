@@ -532,8 +532,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
               $('#calendar').fullCalendar({
                 theme: true,
                 header: {
-                  right: 'prev,next,today',
-                  left: 'week,month,day'
+                  right: 'prev,next,today'
                 },
                 buttonText: {
                   today: 'today',
