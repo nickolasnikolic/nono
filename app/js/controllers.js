@@ -364,9 +364,16 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
         console.log('data is pulled for scheduling from the current lover, and it is: ');
         console.log(data);
 
-        askerDatableDaysString = data.datableDays[0].datable_days.toString();
+        askerDatableDaysString = data.datableDays[0].datable_days;
         askerEventsHolder.concat( data.datesAsked );
         askerEventsHolder.concat( data.datesGiven );
+
+
+        console.log('askerDatableDaysString is: ');
+        console.log(askerDatableDaysString);
+
+        console.log('askerEventsHolder is: ');
+        console.log(askerEventsHolder);
       })
       .error(function(error){
         console.log('There has been an error in getting user dates, and it is...:');
@@ -380,6 +387,12 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
         giverDatableDaysString = data.datableDays[0].datable_days.toString();
         giverEventsHolder.concat( data.datesAsked );
         giverEventsHolder.concat( data.datesGiven );
+
+        console.log('giverDatableDaysString');
+        console.log(giverDatableDaysString);
+
+        console.log('giverEventsHolder is: ');
+        console.log(giverEventsHolder);
       })
       .error(function(error){
         console.log('There has been an error in getting loveInterests dates, and it is...:');
@@ -388,16 +401,6 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
   //format the output into json compatible with fullCalandar
 
   //todo hack le`disgust but more work needed, etc
-
-  console.log('askerDatableDaysString is: ');
-  console.log(askerDatableDaysString);
-  console.log('giverDatableDaysString');
-  console.log(giverDatableDaysString);
-
-  console.log('askerEventsHolder is: ');
-  console.log(askerEventsHolder);
-  console.log('giverEventsHolder is: ');
-  console.log(giverEventsHolder);
 
   /*
     It should follow the following template:
