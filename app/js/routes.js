@@ -80,7 +80,7 @@ var nonoApp = angular.module('nono', ['ui.router', 'ngSanitize', 'angular.filter
       .state('itinerarylogged', {
         url: '/itinerary',
         templateUrl: 'templates/itinerary.html',
-        controller: 'ConfirmationController',
+        controller: 'ItineraryController',
         onEnter: function($state) {
           console.log('itinerary');
         }
