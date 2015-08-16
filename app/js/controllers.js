@@ -381,7 +381,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
 
   //todo hack le`disgust but more work needed, etc
   var eventsArray = _.flatten( eventsHolder );
-
+  console.log( eventsArray );
   /*
     It should follow the following template:
 
