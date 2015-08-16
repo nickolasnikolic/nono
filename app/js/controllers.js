@@ -380,6 +380,8 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
   //format the output into json compatible with fullCalandar
 
   //todo hack le`disgust but more work needed, etc
+  console.log('eventsHolder is: ');
+  console.log(eventsHolder);
   var eventsArray = eventsHolder;
   /*
     It should follow the following template:
@@ -413,7 +415,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
     editable: true,
     eventLimit: true, // allow "more" link when too many events
 
-    events: eventsArray, //todo massage this data more before inserting...
+    events: [], //todo massage this data more before inserting...
 
     dayClick: function(e) {
       console.log(e);
