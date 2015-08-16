@@ -255,7 +255,7 @@ $app->post('/itinerary/messages/:dateid', function( $dateid ){
 
   //send a love note
   $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
-  $stmt = $db->prepare('INSERT INTO lovenotes (note_id, note) VALUES (:dateid, :note);');
+  $stmt = $db->prepare('INSERT INTO lovenotes (note, date_id) VALUES ( :note,:dateid );');
   $stmt->bindParam(':dateid', $dateid);
   $stmt->bindParam(':note', $note);
 
