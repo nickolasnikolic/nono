@@ -342,15 +342,15 @@ nonoApp.controller('SelectionController', ['$scope', function($scope) {
 
 }])
 
-nonoApp.controller('SchedulingController', ['$scope', 'LoverRegistryService', function($scope, LoverRegistryService) {
+nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegistryService', function($scope, $stateParams, LoverRegistryService) {
   document.title = 'nono - scheduling'; //set the page title
   $scope.navigation = true;
   $scope.googleLogin = false;
 
-  var loverUser = LoverRegistryService.userId;
-  var loveInterest = '';
+  console.log($stateParams);
 
-  $scope.schedulingLogged = function( idObject ){ loveInterest = idObject.id; console.log(loveInterest); };
+  var loverUser = LoverRegistryService.userId;
+  var loveInterest = $stateParams.loveInterest;
 
   var eventsHolder = [];
 
