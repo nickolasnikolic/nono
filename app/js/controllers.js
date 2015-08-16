@@ -536,8 +536,9 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
 
               //display it
               $('#calendar').fullCalendar({
-                theme: true,
+                theme: false,
                 header: {
+                  center: 'month, agendaWeek',
                   right: 'prev,next,today'
                 },
                 buttonText: {
@@ -548,7 +549,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                   next: '>',
                   prev: '<'
                 },
-                editable: true,
+                editable: false,
                 eventLimit: true, // allow "more" link when too many events
                 eventBackgroundColor: 'black',
                 eventBorderColor: 'black',
