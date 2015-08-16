@@ -594,11 +594,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                 events: finalEventList,
 
                 dayClick: function(e) {
-                  console.log(e);
-                  //zoom to agenda week view with this date as the week
-
-                  $('#calendar').fullCalendar( 'getView', 'agendaWeek' );
-                  $('#calendar').fullCalendar( 'gotoDate', e.d );
+                  console.log(e.d);
                 },
                 eventClick: function(e){
                   //schedule a date //todo gitter done...
