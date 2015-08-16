@@ -342,7 +342,7 @@ nonoApp.controller('SelectionController', ['$scope', function($scope) {
 
 }])
 
-nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegistryService', function($scope, $stateParams, LoverRegistryService) {
+nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 'LoverRegistryService', function($scope, $state, $stateParams, LoverRegistryService) {
   document.title = 'nono - scheduling'; //set the page title
   $scope.navigation = true;
   $scope.googleLogin = false;
