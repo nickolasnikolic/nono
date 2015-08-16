@@ -484,11 +484,11 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
               }if(giverDatableDaysString.indexOf( 'sunday dinner' ) != -1 ){
                 datableDays.sunday.dinner = true;
               }
-              //console.log(datableDays);
 
               datableDaysArray = _.pairs(datableDays);
 
               var formattedDatableDaysArray = [];
+
               _.each(datableDaysArray, function(value, day){
 
                 if(value.breakfast){
@@ -567,10 +567,6 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
         console.log('There has been an error in getting user dates, and it is...:');
         console.log(error);
       });
-
-  //format it
-  //react to user interaction
-
 }])
 
 nonoApp.controller('ConfirmationController', ['$scope', function($scope) {
