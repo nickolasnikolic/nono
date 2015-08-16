@@ -496,6 +496,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                         'start': '07:00:00',
                         'end': '11:00:00',
                         'rendering': 'background',
+                        overlap: true,
                         'dow': [day]
                       }
                   );
@@ -506,6 +507,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                         'start': '11:00:00',
                         'end': '16:00:00',
                         'rendering': 'background',
+                        overlap: true,
                         'dow': [day]
                       }
                   );
@@ -516,6 +518,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                         'start': '16:00:00',
                         'end': '24:00:00',
                         'rendering': 'background',
+                        overlap: true,
                         'dow': [day]
                       }
                   );
