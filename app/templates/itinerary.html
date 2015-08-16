@@ -4,13 +4,15 @@
     <div class="lover row" ng-repeat="date in dates">
       <h3>{{date.date_start}}</h3>
       <ul class="lover-stats">
-        <li></li>
+        <hr />
         <li>date giver: lover #{{date.giver}}</li>
         <li>date asker: lover #{{date.asker}}</li>
-        <li>send a quick message to this user:</li>
+        <hr />
         <li>was the date good? <a id="dateGood">yes</a> <a id="dateNotGood">no</a></li>
-        <li><form><textarea ng-model="messages"></textarea></form></li>
-        <li ng-repeat="message in messages"></li>
+        <hr />
+        <li>send a quick message to this user:</li>
+        <li><form><input type="text" ng-model="messages"></input></form></li>
+        <li ng-repeat="message in messages">{{message}}</li>
       </ul>
     </div>
   </div>
