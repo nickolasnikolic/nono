@@ -14,7 +14,7 @@
         <hr />
         <li>send a quick message to this user (for instance suggest a place to go):</li>
         <li><form><input type="text"></input><button ng-click="saveMessage(date.romantic_date_id)">save</button></form></li>
-        <li ng-repeat="message in date.messages">{{message}}</li>
+        <li ng-repeat="message in date.messages">{{message.note}}</li>
       </ul>
     </div>
   </div>
