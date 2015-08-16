@@ -60,7 +60,7 @@ var nonoApp = angular.module('nono', ['ui.router', 'ngSanitize', 'angular.filter
       })
 
       .state('schedulinglogged', {
-        url: '/scheduling',
+        url: '/scheduling/:loveInterest',
         templateUrl: 'templates/scheduling.html',
         controller: 'SchedulingController',
         onEnter: function($state) {
