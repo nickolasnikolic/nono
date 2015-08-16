@@ -394,7 +394,22 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
               var masterEventList = [];
 
               masterEventList = masterEventList.concat( askerEventsHolder, giverEventsHolder );
+
+              console.log(masterEventList);
+
+              var formattedEventList = [];
+
               //todo hack le`disgust but more work needed, etc
+
+              masterEventList = _.each( masterEventList, function( element ){
+                formattedEventList.push( {
+                  'asker': element.asker,
+                  'giver': element.giver,
+                  'id': element.romantic_date_id,
+                  'start': element.date,
+                  'end': moment( element.date).add( '3 hours').toIsoString()
+                } );
+              } );
 
               /*
                It should follow the following template:
