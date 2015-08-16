@@ -642,12 +642,12 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
         $scope.$apply();
       })
       .then(function(){
-        _.each($scope.dates,function(date){
+        _.each($scope.dates,function(date, index, list){
 
           $.getJSON('../api/itinerary/messages/' + date.romantic_date_id)
               .success(function(data){
 
-                $scope[$id].messages = data;
+                list[index].messages = data;
                 $scope.$apply();
               })
               .error(function(error){console.log(error);});
