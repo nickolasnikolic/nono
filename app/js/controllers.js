@@ -663,31 +663,51 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
   };
 
   $scope.dateGood = function(id, flag, asker, giver){
-    var suppository = {};
-    suppository.flag = flag;
 
-    $.post( '../api/itinerary/dateGood/' + id, suppository );
+    var suppository = {};
+
+    suppository.flag = flag;
+    suppository.asker = asker;
+    suppository.giver = giver;
+    suppository.currentUser = LoverRegistryService.userId;
+
+    $.post( '../api/itinerary/date/good/' + id, suppository );
   };
 
   $scope.dateNice = function(id, flag, asker, giver){
-    var suppository = {};
-    suppository.flag = flag;
 
-    $.post( '../api/itinerary/dateNice/' + id, suppository );
+    var suppository = {};
+
+    suppository.flag = flag;
+    suppository.asker = asker;
+    suppository.giver = giver;
+    suppository.currentUser = LoverRegistryService.userId;
+
+    $.post( '../api/itinerary/date/nice/' + id, suppository );
   };
 
   $scope.dateContact = function(id, flag, asker, giver){
-    var suppository = {};
-    suppository.flag = flag;
 
-    $.post( '../api/itinerary/dateContact/' + id, suppository );
+    var suppository = {};
+
+    suppository.flag = flag;
+    suppository.asker = asker;
+    suppository.giver = giver;
+    suppository.currentUser = LoverRegistryService.userId;
+
+    $.post( '../api/itinerary/date/contact/' + id, suppository );
   };
 
   $scope.dateShow = function(id, flag, asker, giver){
-    var suppository = {};
-    suppository.flag = flag;
 
-    $.post( '../api/itinerary/dateShow/' + id, suppository );
+    var suppository = {};
+
+    suppository.flag = flag;
+    suppository.asker = asker;
+    suppository.giver = giver;
+    suppository.currentUser = LoverRegistryService.userId;
+
+    $.post( '../api/itinerary/date/show/' + id, suppository );
   };
 
 

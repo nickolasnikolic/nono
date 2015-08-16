@@ -265,6 +265,38 @@ $app->post('/itinerary/messages/:dateid', function( $dateid ){
   echo json_encode($_POST);
 });
 
+
+$app->post('/itinerary/date/:mode/:id', function( $mode, $id ){
+
+  $flag = $_POST['flag'];
+  $asker = $_POST['asker'];
+  $giver = $_POST['giver'];
+  $currentUser = $_POST['currentUser'];
+
+  $direction = '';
+
+  if( $asker == $currentUser ){
+    $direction = $giver;
+  }else{
+    $direction = $asker;
+  }
+
+
+  if( !$flag ) {
+    //send a love note
+    $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
+    $stmt = $db->prepare('UPDATE lovers (:mode) SET :column = :column + 1 WHERE user_id = :who;');
+    $stmt->bindParam(':mode', $mode);
+    $stmt->bindParam(':column', $column);
+    $stmt->bindParam(':who', $direction);
+
+
+    $stmt->execute();
+  }
+  //display confirmation
+  echo json_encode($_POST);
+});
+
 $app->post('/contact', function(){
   //send message in content
   $message = $_POST['name'];
