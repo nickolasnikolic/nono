@@ -401,8 +401,6 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
 
               _.each( masterEventList, function( element ){
                 formattedEventList.push( {
-                  'asker': element.asker,
-                  'giver': element.giver,
                   'id': element.romantic_date_id,
                   'title': 'set date',
                   'start': element.date_start,
