@@ -346,11 +346,24 @@ nonoApp.controller('SchedulingController', ['$scope', 'LoverRegistryService', fu
   document.title = 'nono - scheduling'; //set the page title
   $scope.navigation = true;
   $scope.googleLogin = false;
-  
-  var lover = LoverRegistryService.userId;
-  var loveInterest = '21';
+
+  var loverUser = LoverRegistryService.userId;
+  var loveInterest = '';
+
+  $scope.schedulingLogged = function( idObject ){ loveInterest = idObject.id; console.log(loveInterest); };
+
+  var eventsHolder = [];
 
   //pull from database the records of dates and undateable days
+  $.getJSON('../api/scheduling/' + loverUser)
+      .success(function(data){
+        console.log('data is pulled for scheduling, and it is: ');
+        console.log(data);
+      })
+      .error(function(error){
+        console.log('There has been an error, and it is...:');
+        console.log(error);
+      });
   $.getJSON('../api/scheduling/' + loveInterest)
       .success(function(data){
         console.log('data is pulled for scheduling, and it is: ');
@@ -360,7 +373,6 @@ nonoApp.controller('SchedulingController', ['$scope', 'LoverRegistryService', fu
         console.log('There has been an error, and it is...:');
         console.log(error);
       });
-
   //format the output into json compatible with fullCalandar
 
   //display it
