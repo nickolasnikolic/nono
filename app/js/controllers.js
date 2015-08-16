@@ -388,6 +388,12 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
   //format the output into json compatible with fullCalandar
 
   //todo hack le`disgust but more work needed, etc
+
+  console.log('askerDatableDaysString is: ');
+  console.log(askerDatableDaysString);
+  console.log('giverDatableDaysString');
+  console.log(giverDatableDaysString);
+
   console.log('askerEventsHolder is: ');
   console.log(askerEventsHolder);
   console.log('giverEventsHolder is: ');
