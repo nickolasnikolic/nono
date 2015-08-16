@@ -488,9 +488,8 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
 
               datableDaysArray = _.pairs(datableDays);
 
-              console.log(datableDaysArray);
               var formattedDatableDaysArray = [];
-              foreach( day in datableDaysArray){
+              _.each(datableDaysArray, function(day){
                 if(day.breakfast){
                   formattedDatableDaysArray.push(
                       {
@@ -518,7 +517,10 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                       }
                   );
                 }
-              }
+              });
+
+              //form the final listing
+              formattedEventList = formattedEventList.concat(formattedDatableDaysArray);
 
               //display it
               $('#calendar').fullCalendar({
