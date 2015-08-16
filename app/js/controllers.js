@@ -357,24 +357,24 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
   //pull from database the records of dates and undateable days
   $.getJSON('../api/scheduling/' + loverUser)
       .success(function(data){
-        console.log('data is pulled for scheduling, and it is: ');
+        console.log('data is pulled for scheduling from the current lover, and it is: ');
         console.log(data);
 
         eventsHolder.push( data.datesAsked );
       })
       .error(function(error){
-        console.log('There has been an error, and it is...:');
+        console.log('There has been an error in getting user dates, and it is...:');
         console.log(error);
       });
   $.getJSON('../api/scheduling/' + loveInterest)
       .success(function(data){
-        console.log('data is pulled for scheduling, and it is: ');
+        console.log('data is pulled from loveInterest for scheduling, and it is: ');
         console.log(data);
 
         eventsHolder.push( data.datesGiven );
       })
       .error(function(error){
-        console.log('There has been an error, and it is...:');
+        console.log('There has been an error in getting loveInterest\'s dates, and it is...:');
         console.log(error);
       });
   //format the output into json compatible with fullCalandar
