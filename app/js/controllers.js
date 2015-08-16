@@ -603,7 +603,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
 
                   LoverRegistryService.userDate = suppository;
 
-                  $.post( '../api/' + LoverRegistryService.userId + '/' + $stateParams.loveInterest, suppository)
+                  $.post( '../api/scheduling/' + LoverRegistryService.userId + '/' + $stateParams.loveInterest, suppository)
                       .success(function(data){
                         console.log(data);
                         $state.go('confirmationlogged'); //todo placeholder
