@@ -559,6 +559,16 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                 dayClick: function(e) {
                   console.log(e);
                   console.log(moment(e._d).fromNow());
+                },
+                eventClick: function(e){
+                  //schedule a date
+                },
+                eventMouseover: function(e){
+                  //check if the event contains a date
+                  //color a darker shade of green if available
+                },
+                eventMouseout: function(e){
+                  //return to original shade
                 }
               });
 
