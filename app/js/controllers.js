@@ -637,6 +637,7 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
 
   $.getJSON('../api/itinerary/' + LoverRegistryService.userId)
       .success(function(data){
+        console.log(data);
         $scope.dates = data;
         $scope.$apply();
       })
