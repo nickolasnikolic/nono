@@ -559,8 +559,8 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                 dayClick: function(e) {
                   console.log(e);
                   //zoom to agenda week view with this date as the week
-                  $.fullCalendar( 'gotoDate', e.d );
-                  $.fullCalendar( 'getView', 'agendaWeek' );
+                  $('#calendar').fullCalendar( 'gotoDate', e.d );
+                  $('#calendar').fullCalendar( 'getView', 'agendaWeek' );
 
                 },
                 eventClick: function(e){
