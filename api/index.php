@@ -210,7 +210,7 @@ $app->get('/confirmation/:date', function( $date ){
 
   $stmt->execute();
 
-  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
   //schedule an email to both participants leading to date rating page /todo
 
@@ -218,13 +218,24 @@ $app->get('/confirmation/:date', function( $date ){
   echo json_encode($result);
 });
 
-$app->get('/rating', function(){
-  //just display rating page
+$app->get('/itinerary/:lover', function($lover){
+  //just display itinerary page
+  $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
+  $stmt = $db->prepare('SELECT * FROM romantic_dates WHERE asker = :lover OR giver = :lover;');
+  $stmt->bindParam(':lover', $lover);
+
+  $stmt->execute();
+
+  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+  //schedule an email to both participants leading to date rating page /todo
+
+  //display confirmation
+  echo json_encode($result);
 });
 
-$app->post('/rating/:date/:lover', function( $date, $lover ){
-  //update the database record for the participant
-  //display confirmation message that this is done
+$app->post('/itinerary/:date/:lover', function( $date, $lover ){
+  //update the database record for the participants' date
 });
 
 $app->post('/contact', function(){

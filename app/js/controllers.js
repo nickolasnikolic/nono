@@ -628,8 +628,14 @@ nonoApp.controller('ConfirmationController', ['$scope', 'LoverRegistryService', 
   $scope.date = LoverRegistryService.userDate.date;
 }])
 
-nonoApp.controller('RatingController', ['$scope', function($scope) {
-  document.title = 'nono - rating'; //set the page title
+nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', function($scope, LoverRegistryService) {
+  document.title = 'nono - itinerary'; //set the page title
+
+  $.getJSON('../api/itinerary/' + LoverRegistryService.userId)
+      .success(function(data){
+
+      })
+      .error(function(error){ console.log(error); });
 }])
 
 nonoApp.controller('ContactController', ['$scope', function($scope) {
