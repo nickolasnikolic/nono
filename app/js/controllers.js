@@ -641,7 +641,26 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
         $scope.dates = data;
         $scope.$apply();
       })
+      .then(function(){
+        _.each($scope.dates,function(date){
+          $.getJSON('../api/itinerary/messages/' + date.romantic_date_id)
+              .success(function(data){
+                date.messages = data.messages;
+              });
+        });
+      })
       .error(function(error){ console.log(error); });
+
+
+  $scope.saveMessage = function( id, asker, giver ){
+
+    var message = {};
+
+    message.message = $scope.messages;
+
+    $.post( '../api/itinerary/messages/' + id, message );
+  };
+
 }])
 
 nonoApp.controller('ContactController', ['$scope', function($scope) {
