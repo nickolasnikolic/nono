@@ -353,6 +353,8 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
   var loveInterest = $stateParams.loveInterest;
 
   var eventsHolder = [];
+  var askerDatableDaysString = '';
+  var giverDatableDaysString = '';
 
   //pull from database the records of dates and undateable days
   $.getJSON('../api/scheduling/' + loverUser)
@@ -360,7 +362,9 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
         console.log('data is pulled for scheduling from the current lover, and it is: ');
         console.log(data);
 
+        askerDatableDaysString = data.datableDays[0];
         eventsHolder.push( data.datesAsked );
+        eventsHolder.push( data.datesGiven );
       })
       .error(function(error){
         console.log('There has been an error in getting user dates, and it is...:');
@@ -371,6 +375,8 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
         console.log('data is pulled from loveInterest for scheduling, and it is: ');
         console.log(data);
 
+        giverDatableDaysString = data.datableDays[0];
+        eventsHolder.push( data.datesAsked );
         eventsHolder.push( data.datesGiven );
       })
       .error(function(error){
