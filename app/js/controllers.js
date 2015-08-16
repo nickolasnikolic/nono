@@ -411,7 +411,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
               } );
 
               //translate dateable days string back into a usable format
-              var dateableDays = {};
+              var datableDays = {};
               var datableDaysArray = [];
 
               //monday
