@@ -659,7 +659,7 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
     var message = {};
     var loveNote = $('#loveNote').val();
     message.message = loveNote;
-    $scope.dates[index].messages.push( loveNote );
+    $scope.dates[index].messages.push( { 'note':loveNote } );
 
     $.post( '../api/itinerary/messages/' + id, message );
   };
