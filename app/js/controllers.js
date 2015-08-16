@@ -573,8 +573,9 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
               //display it
               $('#calendar').fullCalendar({
                 theme: false,
+                defaultView: 'agendaWeek',
                 header: {
-                  center: 'month, agendaWeek',
+                  center: 'agandaWeek, Month',
                   right: 'prev,next,today'
                 },
                 buttonText: {
