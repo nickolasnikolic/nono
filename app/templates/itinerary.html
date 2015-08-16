@@ -1,7 +1,7 @@
 
 <div class="" id="itineraryContainer">
   <div class="col-lg-10 col-lg-push-2">
-    <div class="lover row" ng-repeat="date in dates">
+    <div class="lover row" ng-repeat="date in dates track by date.romantic_date_id">
       <h3>{{date.date}}</h3>
       <ul class="lover-stats">
         <li><strong>date giver: lover #{{date.giver}}</strong></li>
@@ -14,7 +14,7 @@
         <hr />
         <li>send a quick message to this user (for instance suggest a place to go):</li>
         <li><form><input type="text" id="loveNote"></input><button ng-click="saveMessage(date.romantic_date_id, $index)">save</button></form></li>
-        <li ng-repeat="message in date.messages">{{message.note}}</li>
+        <li ng-repeat="message in date.messages track by $index">{{message.note}}</li>
       </ul>
     </div>
   </div>
