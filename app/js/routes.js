@@ -77,6 +77,15 @@ var nonoApp = angular.module('nono', ['ui.router', 'ngSanitize', 'angular.filter
         }
       })
 
+      .state('itinerarylogged', {
+        url: '/itinerary',
+        templateUrl: 'templates/itinerary.html',
+        controller: 'ConfirmationController',
+        onEnter: function($state) {
+          console.log('itinerary');
+        }
+      })
+
       .state('ratinglogged', {
         url: '/rating',
         templateUrl: 'templates/itinerary.html',
