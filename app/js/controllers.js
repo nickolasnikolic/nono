@@ -365,8 +365,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
         console.log(data);
 
         askerDatableDaysString = data.datableDays[0].datable_days;
-        askerEventsHolder.concat( data.datesAsked );
-        askerEventsHolder.concat( data.datesGiven );
+        askerEventsHolder = askerEventsHolder.concat( data.datesAsked, data.datesGiven );
 
 
         console.log('askerDatableDaysString is: ');
@@ -381,8 +380,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
               console.log(data);
 
               giverDatableDaysString = data.datableDays[0].datable_days.toString();
-              giverEventsHolder.concat( data.datesAsked );
-              giverEventsHolder.concat( data.datesGiven );
+              giverEventsHolder = giverEventsHolder.concat( data.datesAsked, data.datesGiven );
 
               console.log('giverDatableDaysString');
               console.log(giverDatableDaysString);
