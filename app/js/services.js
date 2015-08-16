@@ -4,6 +4,7 @@ nonoApp
 
       registry.userEmail = '';
       registry.userId = '';
+      registry.userDate = {};
 
       return registry;
     });

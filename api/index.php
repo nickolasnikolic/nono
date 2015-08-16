@@ -191,7 +191,7 @@ $app->post('/scheduling/:asker/:loveinterest', function( $asker, $loveinterest )
   $date = $_POST['date'];
 
   $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
-  $stmt = $db->prepare('INSERT INTO romantic_dates (asker, giver, date) VALUES (:asker, :giver, :date);');
+  $stmt = $db->prepare('INSERT INTO romantic_dates (asker, giver, date_start) VALUES (:asker, :giver, :date);');
   $stmt->bindParam(':asker', $asker);
   $stmt->bindParam(':giver', $loveinterest);
   $stmt->bindParam(':date', $date);

@@ -594,20 +594,20 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                 events: finalEventList,
 
                 dayClick: function(e) {
-                  console.log(moment(e.d).format('YYYY-MM-DD HH:hh:ss'));
-                },
-                eventClick: function(e){
-                  //schedule a date //todo gitter done...
-                  console.log(e);
-                },
-                eventMouseover: function(e){
-                  //check if the event contains a date
-                  //color a darker shade of green if available
-                  console.log(e);
-                },
-                eventMouseout: function(e){
-                  //return to original shade
-                  console.log(e);
+
+                  var suppository = {};
+
+                  suppository.asker = LoverRegistryService.userId;
+                  suppository.giver = $stateParams.loveInterest;
+                  suppository.date = moment(e.d).format('YYYY-MM-DD HH:hh:ss');
+
+                  LoverRegistryService.userDate = suppository;
+
+                  $.post( '../api/' + LoverRegistryService.userId + '/' + $stateParams.loveInterest, suppository)
+                      .success(function(data){
+                        console.log(data);
+                        $state.go('confirmationlogged'); //todo placeholder
+                      });
                 }
               });
 
@@ -623,8 +623,9 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
       });
 }])
 
-nonoApp.controller('ConfirmationController', ['$scope', function($scope) {
+nonoApp.controller('ConfirmationController', ['$scope', 'LoverRegistryService', function($scope,LoverRegistryService) {
   document.title = 'nono - confirmation'; //set the page title
+  $scope.date = LoverRegistryService.userDate.date;
 }])
 
 nonoApp.controller('RatingController', ['$scope', function($scope) {
