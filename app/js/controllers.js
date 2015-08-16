@@ -404,9 +404,9 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                   'asker': element.asker,
                   'giver': element.giver,
                   'id': element.romantic_date_id,
-                  'title': 'a date between ' + element.asker + ' and ' + element.giver,
-                  'start': element.date
-                  //'end': element.date_end... //todo add date end to db entry for here
+                  'title': 'a date,
+                  'start': element.date_start,
+                  'end': element.date_end //todo add date end to db entry for here
                 } );
               } );
 
