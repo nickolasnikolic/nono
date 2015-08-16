@@ -160,6 +160,7 @@ $app->get('/scheduling/:loveinterest', function( $loveinterest ){
   $stmt->execute();
 
   $datableDaysResult = $stmt->fetch(PDO::FETCH_ASSOC);
+  var_dump($datableDaysResult);
     //get filled slots
   $stmt = $db->prepare('SELECT * FROM romantic_dates WHERE asker = :lover OR giver = :lover;');
   $stmt->bindParam(':lover', $loveinterest);
