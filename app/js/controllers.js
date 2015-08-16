@@ -565,13 +565,16 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                 },
                 eventClick: function(e){
                   //schedule a date //todo gitter done...
+                  console.log(e);
                 },
                 eventMouseover: function(e){
                   //check if the event contains a date
                   //color a darker shade of green if available
+                  console.log(e);
                 },
                 eventMouseout: function(e){
                   //return to original shade
+                  console.log(e);
                 }
               });
 
