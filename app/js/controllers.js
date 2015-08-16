@@ -654,11 +654,11 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
         });
       });
 
-  $scope.saveMessage = function( id, asker, giver ){
+  $scope.saveMessage = function( id ){
 
     var message = {};
 
-    message.message = $scope.messages;
+    message.message = $('#loveNote').val();
 
     $.post( '../api/itinerary/messages/' + id, message );
   };
