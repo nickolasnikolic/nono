@@ -662,6 +662,35 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
     $.post( '../api/itinerary/messages/' + id, message, function(data){ console.log(data); } );
   };
 
+  $scope.dateGood = function(id, flag, asker, giver){
+    var suppository = {};
+    suppository.flag = flag;
+
+    $.post( '../api/itinerary/dateGood/' + id, suppository );
+  };
+
+  $scope.dateNice = function(id, flag, asker, giver){
+    var suppository = {};
+    suppository.flag = flag;
+
+    $.post( '../api/itinerary/dateNice/' + id, suppository );
+  };
+
+  $scope.dateContact = function(id, flag, asker, giver){
+    var suppository = {};
+    suppository.flag = flag;
+
+    $.post( '../api/itinerary/dateContact/' + id, suppository );
+  };
+
+  $scope.dateShow = function(id, flag, asker, giver){
+    var suppository = {};
+    suppository.flag = flag;
+
+    $.post( '../api/itinerary/dateShow/' + id, suppository );
+  };
+
+
 }])
 
 nonoApp.controller('ContactController', ['$scope', function($scope) {
