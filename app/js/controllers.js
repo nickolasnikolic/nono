@@ -554,14 +554,17 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                 eventBackgroundColor: 'black',
                 eventBorderColor: 'black',
 
-                events: finalEventList, //todo massage this data more before inserting...
+                events: finalEventList,
 
                 dayClick: function(e) {
                   console.log(e);
-                  console.log(moment(e._d).fromNow());
+                  //zoom to agenda week view with this date as the week
+                  $.fullCalendar( 'gotoDate', e._d );
+                  $.fullCalendar( 'getView', 'agendaWeek' );
+
                 },
                 eventClick: function(e){
-                  //schedule a date
+                  //schedule a date //todo gitter done...
                 },
                 eventMouseover: function(e){
                   //check if the event contains a date
