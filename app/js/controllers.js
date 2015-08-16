@@ -490,13 +490,15 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
 
               var formattedDatableDaysArray = [];
               _.each(datableDaysArray, function(value, day){
+
+                console.log(day);
+
                 if(value.breakfast){
                   formattedDatableDaysArray.push(
                       {
                         'start': '07:00:00',
                         'end': '11:00:00',
-                        'rendering': 'background',
-                        'dow': day
+                        'rendering': 'background'
                       }
                   );
                 }
@@ -505,8 +507,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                       {
                         'start': '11:00:00',
                         'end': '16:00:00',
-                        'rendering': 'background',
-                        'dow': day
+                        'rendering': 'background'
                       }
                   );
                 }
@@ -515,8 +516,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                       {
                         'start': '16:00:00',
                         'end': '24:00:00',
-                        'rendering': 'background',
-                        'dow': day
+                        'rendering': 'background'
                       }
                   );
                 }
