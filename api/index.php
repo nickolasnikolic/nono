@@ -155,22 +155,35 @@ $app->get('/scheduling/:loveinterest', function( $loveinterest ){
   //display unavailable dates for a particular love interest
     //get datable days
   $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
-  $stmt = $db->prepare('SELECT datable_days FROM lovers WHERE id = :lover');
+  $stmt = $db->prepare('SELECT datable_days FROM lovers WHERE user_id = :lover');
   $stmt->bindParam(':lover', $loveinterest );
   $stmt->execute();
 
   $datableDaysResult = $stmt->fetchAll(PDO::FETCH_ASSOC);
-  var_dump($datableDaysResult);
+
+  var_dump($datableDaysResult); //testing //todo remove
+
     //get filled slots
-  $stmt = $db->prepare('SELECT * FROM romantic_dates WHERE asker = :lover OR giver = :lover;');
+  $stmt = $db->prepare('SELECT * FROM romantic_dates WHERE asker = :lover;');
   $stmt->bindParam(':lover', $loveinterest);
   $stmt->execute();
 
-  $romanticDatesAlreadyPresent = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  $romanticDatesAlreadyAsked = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+  //get filled slots
+  $stmt = $db->prepare('SELECT * FROM romantic_dates WHERE giver = :lover;');
+  $stmt->bindParam(':lover', $loveinterest);
+  $stmt->execute();
+
+  $romanticDatesAlreadyGiven = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+  var_dump($romanticDatesAlreadyPresent); //testing //todo remove
+
     //return them
   $sendJson = Array(
       'datableDays' => $datableDaysResult,
-      'dates' => $romanticDatesAlreadyPresent
+      'datesAsked' => $romanticDatesAlreadyAsked,
+      'datesGiven' => $romanticDatesAlreadyGiven
   );
 
   echo json_encode($sendJson);
