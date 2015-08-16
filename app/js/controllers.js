@@ -260,8 +260,8 @@ nonoApp.controller('SelectionController', ['$scope', function($scope) {
     });
 
     $scope.philter = function(e){
-      console.log('e is: ');
-      console.log(e);
+      //console.log('e is: ');
+      //console.log(e);
       //if the gender matches the filter for neither or both ignore it
       if($scope.filters == undefined || $scope.filters.girl == $scope.filters.boy){
         //do nothing
