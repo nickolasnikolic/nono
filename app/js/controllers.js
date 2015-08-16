@@ -663,6 +663,7 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
       $scope.dates[index].messages = [];
     }
     $scope.dates[index].messages.push( loveNote );
+    $scope.$apply();
 
     $.post( '../api/itinerary/messages/' + id, message );
   };
