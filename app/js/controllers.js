@@ -404,7 +404,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                   'id': element.romantic_date_id,
                   'title': ' >>> a set date',
                   'start': element.date_start,
-                  'end': element.date_end //todo add date end to db entry for here
+                  'end': element.date_end
                 } );
               } );
 
@@ -532,7 +532,8 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
               $('#calendar').fullCalendar({
                 theme: true,
                 header: {
-                  right: 'prev,next,today'
+                  right: 'prev,next,today',
+                  left: 'week,month,day'
                 },
                 buttonText: {
                   today: 'today',
