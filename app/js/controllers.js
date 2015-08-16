@@ -489,6 +489,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
 
               _.each(datableDaysArray, function(value, day){
                 console.log(value);
+                console.log('day is: ');
                 console.log(day);
                 if(value.breakfast == true){
                   formattedDatableDaysArray.push(
