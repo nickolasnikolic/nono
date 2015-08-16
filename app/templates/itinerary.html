@@ -9,8 +9,11 @@
         <li>date asker: lover #{{date.asker}}</li>
         <hr />
         <li>was the date good? <a id="dateGood">yes</a> <a id="dateNotGood">no</a></li>
+        <li>was the date nice? <a id="dateGood">yes</a> <a id="dateNotGood">no</a></li>
+        <li>did the date return contact? <a id="dateGood">yes</a> <a id="dateNotGood">no</a></li>
+        <li>did the date show up? <a id="dateGood">yes</a> <a id="dateNotGood">no</a></li>
         <hr />
-        <li>send a quick message to this user:</li>
+        <li>send a quick message to this user (for instance suggest a place to go):</li>
         <li><form><input type="text" ng-model="messages"></input></form></li>
         <li ng-bind="messages" ng-click="saveMessage(date.giver,date.asker)">{{message}}</li>
       </ul>
