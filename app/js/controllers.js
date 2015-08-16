@@ -404,8 +404,8 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                   'asker': element.asker,
                   'giver': element.giver,
                   'id': element.romantic_date_id,
-                  'start': element.date,
-                  'end': moment( element.date).add( '3 hours').toIsoString()
+                  'start': element.date
+                  //'end': element.date_end... //todo add date end to db entry for here
                 } );
               } );
 
