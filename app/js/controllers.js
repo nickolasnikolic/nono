@@ -410,6 +410,82 @@ nonoApp.controller('SchedulingController', ['$scope', '$stateParams', 'LoverRegi
                 } );
               } );
 
+              //translate dateable days string back into a usable format
+              var dateableDays = {};
+              var datableDaysArray = [];
+
+              //monday
+              if( giverDatableDaysString.indexOf( 'monday' ) != -1 ){
+                datableDays.monday = {};
+              }if(giverDatableDaysString.indexOf( 'monday breakfast' ) != -1 ){
+                datableDays.monday.breakfast = true;//future proofing
+              }if(giverDatableDaysString.indexOf( 'monday lunch' ) != -1 ){
+                datableDays.monday.lunch = true;
+              }if(giverDatableDaysString.indexOf( 'monday dinner' ) != -1 ){
+                datableDays.monday.dinner = true;
+              }
+              //tuesday
+              if( giverDatableDaysString.indexOf( 'tuesday' ) != -1 ){
+                datableDays.tuesday = {};
+              }if(giverDatableDaysString.indexOf( 'tuesday breakfast' ) != -1 ){
+                datableDays.tuesday.breakfast = true;//future proofing
+              }if(giverDatableDaysString.indexOf( 'tuesday lunch' ) != -1 ){
+                datableDays.tuesday.lunch = true;
+              }if(giverDatableDaysString.indexOf( 'tuesday dinner' ) != -1 ){
+                datableDays.tuesday.dinner = true;
+              }
+              //wednesday
+              if( giverDatableDaysString.indexOf( 'wednesday' ) != -1 ){
+                datableDays.wednesday = {};
+              }if(giverDatableDaysString.indexOf( 'wednesday breakfast' ) != -1 ){
+                datableDays.wednesday.breakfast = true;//future proofing
+              }if(giverDatableDaysString.indexOf( 'wednesday lunch' ) != -1 ){
+                datableDays.wednesday.lunch = true;
+              }if(giverDatableDaysString.indexOf( 'wednesday dinner' ) != -1 ){
+                datableDays.wednesday.dinner = true;
+              }
+              //thursday
+              if( giverDatableDaysString.indexOf( 'thursday' ) != -1 ){
+                datableDays.thursday = {};
+              }if(giverDatableDaysString.indexOf( 'thursday breakfast' ) != -1 ){
+                datableDays.thursday.breakfast = true;//future proofing
+              }if(giverDatableDaysString.indexOf( 'thursday lunch' ) != -1 ){
+                datableDays.thursday.lunch = true;
+              }if(giverDatableDaysString.indexOf( 'thursday dinner' ) != -1 ){
+                datableDays.thursday.dinner = true;
+              }
+              //friday
+              if( giverDatableDaysString.indexOf( 'friday' ) != -1 ){
+                datableDays.friday = {};
+              }if(giverDatableDaysString.indexOf( 'friday breakfast' ) != -1 ){
+                datableDays.friday.breakfast = true;//future proofing
+              }if(giverDatableDaysString.indexOf( 'friday lunch' ) != -1 ){
+                datableDays.friday.lunch = true;
+              }if(giverDatableDaysString.indexOf( 'friday dinner' ) != -1 ){
+                datableDays.friday.dinner = true;
+              }
+              //saturday
+              if( giverDatableDaysString.indexOf( 'saturday' ) != -1 ){
+                datableDays.saturday = {};
+              }if(giverDatableDaysString.indexOf( 'saturday breakfast' ) != -1 ){
+                datableDays.saturday.breakfast = true;//future proofing
+              }if(giverDatableDaysString.indexOf( 'saturday lunch' ) != -1 ){
+                datableDays.saturday.lunch = true;
+              }if(giverDatableDaysString.indexOf( 'saturday dinner' ) != -1 ){
+                datableDays.saturday.dinner = true;
+              }
+              //sunday
+              if( giverDatableDaysString.indexOf( 'sunday' ) != -1 ){
+                datableDays.sunday = {};
+              }if(giverDatableDaysString.indexOf( 'sunday breakfast' ) != -1 ){
+                datableDays.sunday.breakfast = true;//future proofing
+              }if(giverDatableDaysString.indexOf( 'sunday lunch' ) != -1 ){
+                datableDays.sunday.lunch = true;
+              }if(giverDatableDaysString.indexOf( 'sunday dinner' ) != -1 ){
+                datableDays.sunday.dinner = true;
+              }
+              console.log(datableDays);
+
               //display it
               $('#calendar').fullCalendar({
                 theme: true,
