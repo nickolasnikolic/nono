@@ -274,7 +274,6 @@ $app->post('/itinerary/date/:mode/:id', function( $mode, $id ){
   $currentUser = $_POST['currentUser'];
 
   if( $flag == 'false' ) {
-    $direction = '';
 
     if( $asker == $currentUser ){
       $direction = $giver;
@@ -296,9 +295,10 @@ $app->post('/itinerary/date/:mode/:id', function( $mode, $id ){
 
     //send a love note
     $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
-    $stmt = $db->prepare('UPDATE lovers SET :column = :column + 1 WHERE user_id = :who;');
+    $stmt = $db->prepare('UPDATE lovers SET :column1 = :column2 + 1 WHERE user_id = :who;');
 
-    $stmt->bindParam(':column', $column);
+    $stmt->bindParam(':column1', $column);
+    $stmt->bindParam(':column2', $column);
     $stmt->bindParam(':who', $direction);
 
 
