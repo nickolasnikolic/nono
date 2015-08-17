@@ -671,7 +671,9 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
     suppository.giver = giver;
     suppository.currentUser = LoverRegistryService.userId;
 
-    $.post( '../api/itinerary/date/nice/' + id, suppository );
+    $.post( '../api/itinerary/date/nice/' + id, suppository )
+        .success(function(response){console.log(response);})
+        .error(function(error){console.log(error);});
   };
 
   $scope.dateContact = function(id, flag, asker, giver){
@@ -684,6 +686,7 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
     suppository.currentUser = LoverRegistryService.userId;
     console.log(suppository);
     $.post( '../api/itinerary/date/contact/' + id, suppository)
+        .success(function(response){console.log(response);})
         .error(function(error){console.log(error);});
   };
 
@@ -696,7 +699,9 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
     suppository.giver = giver;
     suppository.currentUser = LoverRegistryService.userId;
 
-    $.post( '../api/itinerary/date/show/' + id, suppository );
+    $.post( '../api/itinerary/date/show/' + id, suppository )
+        .success(function(response){console.log(response);})
+        .error(function(error){console.log(error);});
   };
 
 
