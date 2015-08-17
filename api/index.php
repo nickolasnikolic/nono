@@ -273,7 +273,7 @@ $app->post('/itinerary/date/:mode/:id', function( $mode, $id ){
   $giver = $_POST['giver'];
   $currentUser = $_POST['currentUser'];
 
-  if( $flag == false ) {
+  if( $flag == 'false' ) {
 
     if( $asker == $currentUser ){
       $direction = $giver;
