@@ -79,11 +79,11 @@
       </div>
       <section ng-show="bootView">
         <ul>
-          <li>boots: {{lover.boots}} time(s) <a><small>dispute</small></a></li>
-          <li>mean: {{lover.mean}} time(s)              <a><small>dispute</small></a></li>
-          <li>no shows: {{lover.no_shows}} time(s)       <a><small>dispute</small></a></li>
-          <li>no contacts: {{lover.no_contacts}} time(s) <a><small>dispute</small></a></li>
-          <li>frozen: <span ng-bind-html="frozenHtml"></span>                <a><small>dispute</small></a></li>
+          <li>boots: {{lover.boots}} time(s) <a ng-click="dispute('boots')"><small>dispute</small></a></li>
+          <li>mean: {{lover.mean}} time(s) <a ng-click="dispute('mean')"><small>dispute</small></a></li>
+          <li>no shows: {{lover.no_shows}} time(s) <a ng-click="dispute('show')"><small>dispute</small></a></li>
+          <li>no contacts: {{lover.no_contacts}} time(s) <a ng-click="dispute('contact')"><small>dispute</small></a></li>
+          <li>frozen: <span ng-bind-html="frozenHtml"></span> <a ng-click="dispute('frozen')"><small>dispute</small></a></li>
         </ul>
       </section>
       <div class="row form-group" ng-show="newLover">

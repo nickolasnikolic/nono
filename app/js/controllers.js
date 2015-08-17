@@ -221,7 +221,7 @@ nonoApp.controller('ProfileUpdateController', ['$scope', '$state','LoverRegistry
   });
 
   $scope.dispute = function( mode ){
-    $.post( '../api/dispute/' + mode, { 'id': LoverRegistryService.userId } )
+    $.post( '../api/dispute/' + mode, { 'id': LoverRegistryService.userId } );
   };
 
   //push the form elements to the api

@@ -305,6 +305,34 @@ $app->post('/itinerary/date/:mode/:id', function( $mode, $id ){
   echo json_encode($_POST);
 });
 
+$app->post('/dispute/:mode', function( $mode ){
+
+  $id = $_POST['id'];
+
+  switch($mode){
+    case 'boots':
+      $sql = 'UPDATE lovers SET dispute_boots = 1 WHERE user_id = :who;';
+      break;
+    case 'show':
+      $sql = 'UPDATE lovers SET dispute_no_shows = 1 WHERE user_id = :who;';
+      break;
+    case 'contact':
+      $sql = 'UPDATE lovers SET dispute_no_contact = 1 WHERE user_id = :who;';
+      break;
+  }
+
+  //send a love note
+  $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
+  $stmt = $db->prepare($sql);
+
+  $stmt->bindParam(':who', $id);
+
+  $stmt->execute();
+
+  //display confirmation
+  echo json_encode($_POST);
+});
+
 $app->post('/contact', function(){
   //send message in content
   $message = $_POST['name'];
