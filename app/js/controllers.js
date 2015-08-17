@@ -675,14 +675,14 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
   };
 
   $scope.dateContact = function(id, flag, asker, giver){
-    console.log('contact');
+
     var suppository = {};
 
     suppository.flag = flag;
     suppository.asker = asker;
     suppository.giver = giver;
     suppository.currentUser = LoverRegistryService.userId;
-
+    console.log(suppository);
     $.post( '../api/itinerary/date/contact/' + id, suppository );
   };
 
