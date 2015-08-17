@@ -675,7 +675,7 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
   };
 
   $scope.dateContact = function(id, flag, asker, giver){
-
+    console.log('contact');
     var suppository = {};
 
     suppository.flag = flag;
