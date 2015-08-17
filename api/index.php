@@ -144,7 +144,8 @@ $app->get('/selection/:notthisone', function($notthisone){
   //return the user stories for a gender
   $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
   $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-  $stmt = $db->prepare('SELECT * FROM lovers LIMIT 500');
+  $stmt = $db->prepare('SELECT * FROM lovers WHERE user_id != :notthisone LIMIT 500');
+  $stmt->bindParam(':notthisone', $notthisone);
   $stmt->execute();
   $result = $stmt->fetchAll();
   //return the result
