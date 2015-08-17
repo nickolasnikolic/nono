@@ -387,14 +387,10 @@ nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 
               console.log('data is pulled from loveInterest for scheduling, and it is: ');
               console.log(data);
 
-              giverDatableDaysString = data.datableDays[0].datable_days;
+              if(data.datableDays[0].datable_days != null) { //in cases where datable days have not been set
+                giverDatableDaysString = data.datableDays[0].datable_days.toString();
+              }
               giverEventsHolder = giverEventsHolder.concat( data.datesAsked, data.datesGiven );
-
-              console.log('giverDatableDaysString');
-              console.log(giverDatableDaysString);
-
-              console.log('giverEventsHolder is: ');
-              console.log(giverEventsHolder);
 
               //format the output into json compatible with fullCalandar
               var masterEventList = [];
