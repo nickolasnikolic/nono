@@ -15,7 +15,6 @@ nonoApp.controller('IndexController', ['$scope', '$state', 'LoverRegistryService
   	// Call user information, for the given network
   	hello(auth.network).api('/me').then(function(resource) {
       //check the email against the database
-      //console.log(resource.email);
       LoverRegistryService.userEmail = resource.email; //quick push it into registry before it escapes...
       $.getJSON( '../api/email/' + resource.email, function( response ){
         //console.log(response);

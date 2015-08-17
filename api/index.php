@@ -198,9 +198,6 @@ $app->post('/scheduling/:asker/:loveinterest', function( $asker, $loveinterest )
   $stmt->bindParam(':date', $date);
 
   $stmt->execute();
-
-  //email both members with their scheduled date
-  //proceed to confirm
 });
 
 $app->get('/confirmation/:date', function( $date ){
@@ -215,14 +212,14 @@ $app->get('/confirmation/:date', function( $date ){
 
   //schedule an email to both participants leading to date rating page /todo
 
-  //display confirmation
+  //display
   echo json_encode($result);
 });
 
 $app->get('/itinerary/:lover', function($lover){
   //just display itinerary page
   $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
-  $stmt = $db->prepare('SELECT * FROM romantic_dates WHERE asker = :lover OR giver = :lover ORDER BY date_start ASC;');
+  $stmt = $db->prepare('SELECT * FROM romantic_dates WHERE asker = :lover OR giver = :lover AND date_start BETWEEN DATE_ADD(day, -30, NOW()) AND DATE_ADD(day, 30, NOW()) ORDER BY date_start ASC;');
   $stmt->bindParam(':lover', $lover);
 
   $stmt->execute();
