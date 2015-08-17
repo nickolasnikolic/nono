@@ -387,7 +387,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 
               console.log('data is pulled from loveInterest for scheduling, and it is: ');
               console.log(data);
 
-              giverDatableDaysString = data.datableDays[0].datable_days.toString();
+              giverDatableDaysString = data.datableDays[0].datable_days;
               giverEventsHolder = giverEventsHolder.concat( data.datesAsked, data.datesGiven );
 
               console.log('giverDatableDaysString');
