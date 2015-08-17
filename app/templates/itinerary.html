@@ -11,7 +11,7 @@
         <li>did the date return contact? <a ng-click="dateContact(date.romantic_date_id, true, date.asker, date.giver)" >yes</a> <a ng-click="dateContact(date.romantic_date_id, false, date.asker, date.giver)" >no</a></li>
         <li>did the date show up? <a ng-click="dateShow(date.romantic_date_id, true, date.asker, date.giver)" >yes</a> <a ng-click="dateShow(date.romantic_date_id, false, date.asker, date.giver)" >no</a></li>
         <hr />
-        <li>send a quick message to this user (for instance suggest a place to go):</li>
+        <li>send a quick message to this user for next time they log in (for instance suggest a place to go):</li>
         <li><form><input type="text" ng-model="date.loveNote"></input><button ng-click="saveMessage(date.romantic_date_id, $index, date.loveNote)">save</button></form></li>
         <li ng-repeat="message in date.messages track by $index">{{message.note}}</li>
       </ul>
