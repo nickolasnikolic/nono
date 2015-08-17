@@ -272,21 +272,32 @@ $app->post('/itinerary/date/:mode/:id', function( $mode, $id ){
   $asker = $_POST['asker'];
   $giver = $_POST['giver'];
   $currentUser = $_POST['currentUser'];
-
-  $direction = '';
-
-  if( $asker == $currentUser ){
-    $direction = $giver;
-  }else{
-    $direction = $asker;
-  }
-
-
+  
   if( !$flag ) {
+    $direction = '';
+
+    if( $asker == $currentUser ){
+      $direction = $giver;
+    }else{
+      $direction = $asker;
+    }
+
+    switch($mode){
+      case 'nice':
+        $column = 'mean';
+        break;
+      case 'show':
+        $column = 'no_shows';
+        break;
+      case 'contact':
+        $column = 'no_contacts';
+        break;
+    }
+
     //send a love note
     $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
-    $stmt = $db->prepare('UPDATE lovers (:mode) SET :column = :column + 1 WHERE user_id = :who;');
-    $stmt->bindParam(':mode', $mode);
+    $stmt = $db->prepare('UPDATE lovers SET :column = :column + 1 WHERE user_id = :who;');
+
     $stmt->bindParam(':column', $column);
     $stmt->bindParam(':who', $direction);
 

@@ -634,7 +634,7 @@ nonoApp.controller('ConfirmationController', ['$scope', 'LoverRegistryService', 
 
 nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', function($scope, LoverRegistryService) {
   document.title = 'nono - itinerary'; //set the page title
-
+  console.log(LoverRegistryService.userId);
   $.getJSON('../api/itinerary/' + LoverRegistryService.userId)
       .success(function(data){
         $scope.dates = data;
@@ -660,18 +660,6 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
     $scope.dates[index].messages.push( { 'note':loveText } );
 
     $.post( '../api/itinerary/messages/' + id, message, function(data){ console.log(data); } );
-  };
-
-  $scope.dateGood = function(id, flag, asker, giver){
-
-    var suppository = {};
-
-    suppository.flag = flag;
-    suppository.asker = asker;
-    suppository.giver = giver;
-    suppository.currentUser = LoverRegistryService.userId;
-
-    $.post( '../api/itinerary/date/good/' + id, suppository );
   };
 
   $scope.dateNice = function(id, flag, asker, giver){
