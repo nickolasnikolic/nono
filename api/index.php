@@ -238,7 +238,7 @@ $app->get('/itinerary/:lover', function($lover){
 $app->get('/itinerary/messages/:dateid', function($dateid){
   //just display itinerary page
   $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
-  $stmt = $db->prepare('SELECT * FROM lovenotes WHERE date_id = :dateid;');
+  $stmt = $db->prepare('SELECT * FROM lovenotes WHERE note_id = :dateid;');
   $stmt->bindParam(':dateid', $dateid);
 
   $stmt->execute();
