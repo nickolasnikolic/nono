@@ -283,22 +283,20 @@ $app->post('/itinerary/date/:mode/:id', function( $mode, $id ){
 
     switch($mode){
       case 'nice':
-        $column = 'mean';
+        $sql = 'UPDATE lovers SET mean = mean + 1 WHERE user_id = :who;';
         break;
       case 'show':
-        $column = 'no_shows';
+        $sql = 'UPDATE lovers SET no_shows = no_shows + 1 WHERE user_id = :who;';
         break;
       case 'contact':
-        $column = 'no_contacts';
+        $sql = 'UPDATE lovers SET no_contacts = no_contacts + 1 WHERE user_id = :who;';
         break;
     }
 
     //send a love note
     $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
-    $stmt = $db->prepare('UPDATE lovers SET :column1 = :column2 + 1 WHERE user_id = :who;');
+    $stmt = $db->prepare($sql);
 
-    $stmt->bindParam(':column1', $column);
-    $stmt->bindParam(':column2', $column);
     $stmt->bindParam(':who', $direction);
 
     $stmt->execute();
