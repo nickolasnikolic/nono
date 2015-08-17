@@ -683,7 +683,8 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
     suppository.giver = giver;
     suppository.currentUser = LoverRegistryService.userId;
     console.log(suppository);
-    $.post( '../api/itinerary/date/contact/' + id, suppository );
+    $.post( '../api/itinerary/date/contact/' + id, suppository)
+        .error(function(error){console.log(error);});
   };
 
   $scope.dateShow = function(id, flag, asker, giver){
