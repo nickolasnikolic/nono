@@ -241,7 +241,7 @@ nonoApp.controller('SubscriptionController', ['$scope', function($scope){
   document.title = 'nono - subscribe';
 }]);
 
-nonoApp.controller('SelectionController', ['$scope', function($scope) {
+nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', function($scope, LoverRegistryService) {
   document.title = 'nono - selection'; //set the page title
   $scope.navigation = true;
   $scope.googleLogin = false;
@@ -258,7 +258,7 @@ nonoApp.controller('SelectionController', ['$scope', function($scope) {
   $scope.filters.tags = '';
 
 
-  $.get('../api/selection')
+  $.get('../api/selection/' + LoverRegistryService.userId)
     .success(function(data) {
       $scope.lovers = JSON.parse(data);
       $scope.$apply();
