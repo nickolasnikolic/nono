@@ -590,6 +590,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 
                   next: '>',
                   prev: '<'
                 },
+                overlap: false,
                 editable: false,
                 eventLimit: true, // allow "more" link when too many events
                 eventBackgroundColor: 'black',
@@ -597,13 +598,17 @@ nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 
 
                 events: finalEventList,
 
-                dayClick: function(e) {
+                dayClick: function(date, evt, view) {
+
+                  console.log(date);
+                  console.log(evt);
+                  console.log(view);
 
                   var suppository = {};
 
                   suppository.asker = LoverRegistryService.userId;
                   suppository.giver = $stateParams.loveInterest;
-                  suppository.date = moment(e.d).format('YYYY-MM-DD HH:hh:ss');
+                  suppository.date = moment(date.d).format('YYYY-MM-DD HH:hh:ss');
 
                   LoverRegistryService.userDate = suppository;
 
