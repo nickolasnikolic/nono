@@ -140,7 +140,7 @@ $app->post('/profile/:lover', function( $lover ){
   echo json_encode( $_POST );
 });
 
-$app->get('/selection', function(){
+$app->get('/selection/:notthisone', function($notthisone){
   //return the user stories for a gender
   $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
   $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
