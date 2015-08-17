@@ -106,7 +106,7 @@ nonoApp.controller('ProfileController', ['$scope', 'LoverRegistryService', funct
   };
 }])
 
-nonoApp.controller('ProfileUpdateController', ['$scope', function($scope, $state) {
+nonoApp.controller('ProfileUpdateController', ['$scope', '$state','LoverRegistryService',  function($scope, $state, LoverRegistryService) {
   document.title = 'nono - update profile'; //set the page title
 
   $scope.newLover = false;
@@ -219,6 +219,10 @@ nonoApp.controller('ProfileUpdateController', ['$scope', function($scope, $state
         console.log(error);
       });
   });
+
+  $scope.dispute = function( mode ){
+    $.post( '../api/dispute/' + mode, { 'id': LoverRegistryService.userId } )
+  };
 
   //push the form elements to the api
   $scope.updateLove = function() {
