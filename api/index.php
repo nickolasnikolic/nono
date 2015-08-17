@@ -221,7 +221,7 @@ $app->get('/confirmation/:date', function( $date ){
 $app->get('/itinerary/:lover', function($lover){
   //just display itinerary page
   $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
-  $stmt = $db->prepare('SELECT * FROM romantic_dates WHERE asker = :lover OR giver = :lover;');
+  $stmt = $db->prepare('SELECT * FROM romantic_dates WHERE asker = :lover OR giver = :lover ORDER BY date_start ASC;');
   $stmt->bindParam(':lover', $lover);
 
   $stmt->execute();
@@ -238,7 +238,7 @@ $app->get('/itinerary/:lover', function($lover){
 $app->get('/itinerary/messages/:dateid', function($dateid){
   //just display itinerary page
   $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
-  $stmt = $db->prepare('SELECT * FROM lovenotes WHERE note_id = :dateid ORDER BY date_start ASC;');
+  $stmt = $db->prepare('SELECT * FROM lovenotes WHERE note_id = :dateid;');
   $stmt->bindParam(':dateid', $dateid);
 
   $stmt->execute();
