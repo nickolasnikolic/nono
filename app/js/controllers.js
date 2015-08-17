@@ -608,7 +608,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 
 
                   suppository.asker = LoverRegistryService.userId;
                   suppository.giver = $stateParams.loveInterest;
-                  suppository.date = moment(date.d).format('YYYY-MM-DD HH:hh:ss');
+                  suppository.date = date.format('YYYY-MM-DD HH:hh:ss');
 
                   LoverRegistryService.userDate = suppository;
 
