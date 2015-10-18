@@ -335,11 +335,11 @@ $app->post('/dispute/:mode', function( $mode ){
   echo json_encode($_POST);
 });
 
-$app->get('/reqwestr/:request',function($request){
+$app->get('/reqwest/:request',function($request){
   echo json_encode(Request::get($request));
 });
 
-$app->post('/reqwestr/:request',function($request){
+$app->post('/reqwest/:request',function($request){
   echo json_encode(Request::post($request, $_POST));
 });
 

@@ -306,13 +306,13 @@ nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', fun
       }
       //if there is no radius match zip directly
       if($scope.filters.zip && !$scope.filters.distance){
-        if(e.zip != $scope.filters.zip){
+        if(e.zip == $scope.filters.zip){
           return false;
         }
       }
       //if the distance matches the filter ignore it
-      if($scope.filters.zip && $scope.filters.distance){
-        $.reqwestr.get('zipapi.herokuapp.com/around/' + $scope.filters.zip + '/' + $scope.filters.distance, function( data ){
+      if($scope.filters.zip && $scope.filters.distance && $scope.filters.distance > 5){
+        Reqwest.get('http://zipapi.herokuapp.com/around/' + $scope.filters.zip + '/' + $scope.filters.distance, function( data ){
           console.log(data);
         });
       }
