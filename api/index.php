@@ -219,7 +219,11 @@ $app->get('/confirmation/:date', function( $date ){
 $app->get('/itinerary/:lover', function($lover){
   //just display itinerary page
   $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
-  $stmt = $db->prepare('SELECT * FROM romantic_dates WHERE asker = :lover OR giver = :lover AND date_start BETWEEN NOW() - INTERVAL 30 DAY AND NOW() ORDER BY date_start ASC;');
+  $stmt = $db->prepare('SELECT *
+                        FROM romantic_dates
+                        WHERE date_start BETWEEN NOW() - INTERVAL 31 DAY AND NOW() + INTERVAL 90 DAY AND
+                          :lover in (asker, giver)
+                        ORDER BY date_start DESC;');
   $stmt->bindParam(':lover', $lover);
 
   $stmt->execute();
@@ -331,11 +335,21 @@ $app->post('/dispute/:mode', function( $mode ){
   echo json_encode($_POST);
 });
 
+$app->get('/reqwestr/:request',function($request){
+  echo json_encode(Request::get($request));
+});
+
+$app->post('/reqwestr/:request',function($request){
+  echo json_encode(Request::post($request, $_POST));
+});
+
 $app->post('/contact', function(){
   //send message in content
   $message = $_POST['name'];
   $message .= $_POST['phone'];
   $message .= $_POST['message'];
+
+  //todo do something with this? shall we?
 
   echo json_encode($_POST);
 });

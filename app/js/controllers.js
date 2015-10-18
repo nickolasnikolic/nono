@@ -43,7 +43,7 @@ nonoApp.controller('IndexController', ['$scope', '$state', 'LoverRegistryService
       $scope.googleLogin = false;
       $scope.navigation = false;
 
-      if(LoverRegistryService.userId != ''){ //todo testing???: needs to differentiate between previously logged or not
+      if(LoverRegistryService.userId != ''){
         $scope.navigation = true;
         $state.go('selectionlogged');
       }
@@ -304,7 +304,7 @@ nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', fun
             break;
         }
       }
-      //if the location matches the filter ignore it
+      //if there is no radius match zip directly
       if($scope.filters.zip && !$scope.filters.distance){
         if(e.zip != $scope.filters.zip){
           return false;
@@ -312,20 +312,9 @@ nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', fun
       }
       //if the distance matches the filter ignore it
       if($scope.filters.zip && $scope.filters.distance){
-        //divide the distance by 30,
-        var radius = $scope.filters.distance / 30;
-        //allow - right to left -  zip digits to change based on that number
-        if(radius >= 2){
-          //do something with the zip, otherwise, for now ignore it for further //todo zip is broken
-          //testing, heh, heh, heh...
-          console.log('big radius');
-          var searchString = $scope.filters.zip.substr(5-radius);
-          var targetString = e.zip.substr(5-radius);
-          console.log(searchString + ' ' + targetString);
-          if(searchString != targetString){
-            return false;
-          }
-        }
+        $.reqwestr.get('zipapi.herokuapp.com/around/' + $scope.filters.zip + '/' + $scope.filters.distance, function( data ){
+          console.log(data);
+        });
       }
       //if the minimum education matches the filter ignore it
       if($scope.filters.education > e.education){
