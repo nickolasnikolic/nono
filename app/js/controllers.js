@@ -305,16 +305,14 @@ nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', fun
         }
       }
       //if there is no radius match zip directly
-      if($scope.filters.zip && !$scope.filters.distance){
-        if(e.zip == $scope.filters.zip){
+      if($scope.filters.zip && !$scope.filters.distance && e.zip == $scope.filters.zip){
           return false;
-        }
       }
       //if the distance matches the filter ignore it
-      if($scope.filters.zip && $scope.filters.distance && $scope.filters.distance > 5){
-        $.get('../api/zipradius/' + $scope.filters.zip + '/' + $scope.filters.distance, function( response ){
-          var data = JSON.parse(response);
-          if(!$scope.filters.zip in data){
+      if($scope.filters.zip && $scope.filters.distance && $scope.filters.distance > 1 && $scope.filters.distance < 1000){
+        $.getJSON('../api/zipradius/' + $scope.filters.zip + '/' + $scope.filters.distance, function( response ){
+          console.log(response);
+          if(!$scope.filters.zip in response){
             return false;
           }
         });
