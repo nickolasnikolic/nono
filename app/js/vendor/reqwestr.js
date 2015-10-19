@@ -4,15 +4,15 @@
         var Reqwest = {};
 
         Reqwest.get = function( requestUrl, callback ) {
-            $.get('../api/reqwest/' + requestUrl)
-                .success(function(response){
+            axios.get('../api/reqwest/' + requestUrl)
+                .then(function(response){
                     callback(response);
                 });
         };
 
         Reqwest.post = function( requestUrl, data, callback ){
-            $.post('../api/reqwest/' + requestUrl, data)
-                .success(function(response){
+            axios.post('../api/reqwest/' + requestUrl, data)
+                .then(function(response){
                     callback(response);
                 });
         };

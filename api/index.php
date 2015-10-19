@@ -335,12 +335,8 @@ $app->post('/dispute/:mode', function( $mode ){
   echo json_encode($_POST);
 });
 
-$app->get('/reqwest/:request',function($request){
-  echo json_encode(Request::get($request));
-});
-
-$app->post('/reqwest/:request',function($request){
-  echo json_encode(Request::post($request, $_POST));
+$app->get('/zipradius/:zip/:radius',function($zip,$radius){
+  echo json_encode(Requests::get('https://zipapi.herokuapp.com/around/'.$zip.'/'.$radius));
 });
 
 $app->post('/contact', function(){

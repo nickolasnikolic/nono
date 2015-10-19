@@ -312,8 +312,11 @@ nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', fun
       }
       //if the distance matches the filter ignore it
       if($scope.filters.zip && $scope.filters.distance && $scope.filters.distance > 5){
-        Reqwest.get('http://zipapi.herokuapp.com/around/' + $scope.filters.zip + '/' + $scope.filters.distance, function( data ){
-          console.log(data);
+        $.get('../api/zipradius/' + $scope.filters.zip + '/' + $scope.filters.distance, function( response ){
+          var data = JSON.parse(response);
+          if(!$scope.filters.zip in data){
+            return false;
+          }
         });
       }
       //if the minimum education matches the filter ignore it
