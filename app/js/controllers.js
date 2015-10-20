@@ -259,6 +259,7 @@ nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', fun
   $scope.filters = {};
   $scope.filters.girl = '';
   $scope.filters.boy = '';
+  $scope.filters.theirPreference = '';
   $scope.filters.age = '';
   $scope.filters.zip = '';
   $scope.filters.distance = '';
@@ -278,7 +279,7 @@ nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', fun
 
     $scope.philter = function(e){
       //console.log('e is: ');
-      //console.log(e);
+      console.log(e);
       //if the gender matches the filter for neither or both ignore it
       if($scope.filters == undefined || $scope.filters.girl == $scope.filters.boy){
         //do nothing
