@@ -289,6 +289,10 @@ nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', fun
         return false;
       }
 
+      if($scope.filters.theirPreference != e.preference){
+        return false;
+      }
+
       if ($scope.filters.age){
         switch (true) {//meh
           case e.age >= 18 && e.age <= 22 && $scope.filters.age != '18-22':
