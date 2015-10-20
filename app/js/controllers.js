@@ -709,6 +709,7 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
 
 nonoApp.controller('ContactController', ['$scope','LoverRegistryService', function($scope,LoverRegistryService) {
   document.title = 'nono - contact'; //set the page title
+  $scope.return = false;
   $('#submitContact').click(function(){
     //push the message to the utility that sends email
     $scope.message.sender = LoverRegistryService.userEmail;
@@ -716,6 +717,7 @@ nonoApp.controller('ContactController', ['$scope','LoverRegistryService', functi
       .success(function(data) {
         //do something about it
         console.log(data);
+        $scope.return = true;
       })
       .error(function(error) {
         //do something about it
