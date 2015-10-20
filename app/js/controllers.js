@@ -90,13 +90,14 @@ nonoApp.controller('ProfileController', ['$scope', '$state', 'LoverRegistryServi
 
   $scope.userEmail = LoverRegistryService.userEmail;
 
-  console.log($scope.userEmail);
-
   //push the form elements to the api
   $scope.newLove = function() {
     console.log($scope.lover);
     $.post('../api/profile', $scope.lover)
       .success(function(data, status) {
+          if($scope.lover.code == 'freelove'){
+            $state.go('selectionlogged');
+          }
         $state.go('subscribenotlogged');
       })
       .error(function(error, status) {
