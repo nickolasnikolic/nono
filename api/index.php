@@ -433,8 +433,8 @@ $app->get('/zipradius/:zip/:radius',function($zip,$radius){
 $app->post('/contact', function(){
   //send message in content
   $sender = $_POST['sender'];
-  $message = $_POST['name'];
-  $message .= $_POST['phone'];
+  $message = $_POST['name'] . '\n';
+  $message .= $_POST['phone'] . '\n';
   $message .= $_POST['message'];
 
   # First, instantiate the SDK with your API credentials and define your domain.
