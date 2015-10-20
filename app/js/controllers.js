@@ -82,6 +82,7 @@ nonoApp.controller('HomeController', ['$scope', function($scope) {
       .success(function(data){
         console.log(data);
         $scope.userCount = data;
+        $scope.$apply();
       });
 }])
 
