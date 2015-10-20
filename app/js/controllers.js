@@ -1,7 +1,7 @@
 nonoApp.controller('IndexController', ['$scope', '$state', 'LoverRegistryService', function($scope, $state, LoverRegistryService) {
   //initial settings
   $scope.googleLogin = true;
-  $scope.frozen = false;
+  $scope.frozen = true;
 
   //get credentials of google api
   hello.init({
@@ -139,7 +139,6 @@ nonoApp.controller('ProfileUpdateController', ['$scope', '$state','LoverRegistry
           $.getJSON('../api/profile/' + result2[0].user_id, function( result3 ){
             //set the lover object to the db return value
             $scope.lover = result3[0];
-            //console.log($scope.lover.datable_days);
 
             //weed out databledays
             $scope.lover.datableDays = {};
@@ -214,7 +213,6 @@ nonoApp.controller('ProfileUpdateController', ['$scope', '$state','LoverRegistry
             }if($scope.lover.datable_days.indexOf( 'sunday dinner' ) != -1 ){
               $scope.lover.datableDays.sunday.dinner = 'sunday dinner';
             }
-            console.log($scope.lover.datableDays);
 
             //set html of frozen
             $scope.frozenHtml = "<strong>no</strong>"; //initial
@@ -222,7 +220,6 @@ nonoApp.controller('ProfileUpdateController', ['$scope', '$state','LoverRegistry
               $scope.frozenHtml = "<strong>yes</strong>";
             }
 
-            console.log($scope.lover);
             $scope.$apply();
           });
         }
@@ -281,8 +278,6 @@ nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', fun
     });
 
     $scope.philter = function(e){
-      //console.log('e is: ');
-      console.log(e);
       //if the gender matches the filter for neither or both ignore it
       if($scope.filters == undefined || $scope.filters.girl == $scope.filters.boy){
         //do nothing
@@ -349,15 +344,12 @@ nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', fun
           console.log(e);
           contained = e.tags.indexOf(arrayElement.trim());
         });
-        console.log(contained >= 0);
         return contained >= 0;
       }
       return true;
     };
 
     $scope.savePreferences = function(){
-      console.log(JSON.stringify($scope.filters));
-
       // Save data to the current local store
       localStorage.setItem("preferences", JSON.stringify($scope.filters));
     };
@@ -411,8 +403,6 @@ nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 
               var masterEventList = [];
 
               masterEventList = masterEventList.concat( askerEventsHolder, giverEventsHolder );
-
-              console.log(masterEventList);
 
               var formattedEventList = [];
 
@@ -613,10 +603,6 @@ nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 
 
                 dayClick: function(date, evt, view) {
 
-                  console.log(date);
-                  console.log(evt);
-                  console.log(view);
-
                   var suppository = {};
 
                   suppository.asker = LoverRegistryService.userId;
@@ -627,8 +613,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 
 
                   $.post( '../api/scheduling/' + LoverRegistryService.userId + '/' + $stateParams.loveInterest, suppository)
                       .success(function(data){
-                        console.log(data);
-                        $state.go('confirmationlogged'); //todo placeholder
+                        $state.go('confirmationlogged');
                       });
                 }
               });
@@ -652,7 +637,6 @@ nonoApp.controller('ConfirmationController', ['$scope', 'LoverRegistryService', 
 
 nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', function($scope, LoverRegistryService) {
   document.title = 'nono - itinerary'; //set the page title
-  console.log(LoverRegistryService.userId);
   $.getJSON('../api/itinerary/' + LoverRegistryService.userId)
       .success(function(data){
         $scope.dates = data;
@@ -660,7 +644,6 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
       })
       .then(function(){
         _.each($scope.dates,function(date, index, list){
-          console.log(date);
           $.getJSON('../api/itinerary/messages/' + date.romantic_date_id)
               .success(function(data){
                 list[index].messages = data;
@@ -701,7 +684,7 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
     suppository.asker = asker;
     suppository.giver = giver;
     suppository.currentUser = LoverRegistryService.userId;
-    console.log(suppository);
+
     $.post( '../api/itinerary/date/contact/' + id, suppository)
         .success(function(response){console.log(response);})
         .error(function(error){console.log(error);});
@@ -721,7 +704,6 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
         .error(function(error){console.log(error);});
   };
 
-
 }])
 
 nonoApp.controller('ContactController', ['$scope','LoverRegistryService', function($scope,LoverRegistryService) {
@@ -733,7 +715,6 @@ nonoApp.controller('ContactController', ['$scope','LoverRegistryService', functi
     $.post('../api/contact', $scope.message)
       .success(function(data) {
         //do something about it
-        console.log(data);
         $scope.return = true;
       })
       .error(function(error) {
