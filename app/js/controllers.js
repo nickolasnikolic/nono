@@ -82,7 +82,7 @@ nonoApp.controller('HomeController', ['$scope', function($scope) {
     $.getJSON('../api/home')
         .success(function(data){
           console.log(data);
-          $scope.userCount = JSON.parse(data);
+          $scope.userCount = data;
           $scope.$apply();
         });
   });
