@@ -38,7 +38,7 @@ $app->get('/home', function(){
   $dbname = substr($url["path"], 1);
 
   $db = new PDO( "mysql:host=$server;dbname=$dbname;charset=utf8", $username, $password);
-  $stmt = $db->prepare('SELECT COUNT(*) FROM lovers;');
+  $stmt = $db->prepare('SELECT COUNT(*) AS COUNTED FROM lovers;');
   $stmt->bindParam( ':user', $lover );
   $stmt->execute();
   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
