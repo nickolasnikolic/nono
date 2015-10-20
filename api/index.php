@@ -28,7 +28,23 @@ $app->get('/email/:query', function( $query ){
   echo json_encode( $result );
 });
 
-$app->get('/home', function(){ echo 'u r here...'; }); //so far nothing for home
+//get a count of users
+$app->get('/home', function(){
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  $server = $url["host"];
+  $username = $url["user"];
+  $password = $url["pass"];
+  $dbname = substr($url["path"], 1);
+
+  $db = new PDO( "mysql:host=$server;dbname=$dbname;charset=utf8", $username, $password);
+  $stmt = $db->prepare('SELECT COUNT(*) FROM lovers;');
+  $stmt->bindParam( ':user', $lover );
+  $stmt->execute();
+  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+  echo json_encode($result);
+});
 
 //populate the form for a lover
 $app->get('/profile/:lover', function( $lover ){
