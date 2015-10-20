@@ -17,7 +17,7 @@ nonoApp.controller('IndexController', ['$scope', '$state', 'LoverRegistryService
       //check the email against the database
       LoverRegistryService.userEmail = resource.email; //quick push it into registry before it escapes...
       $.getJSON( '../api/email/' + resource.email, function( response ){
-        //console.log(response);
+        console.log(response);
         if(response[0].user_id){
           LoverRegistryService.userId = response[0].user_id; //same for this user
           console.log('LoverRegistry.userId is:');
