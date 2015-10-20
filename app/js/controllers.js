@@ -339,7 +339,16 @@ nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', fun
 
     $scope.savePreferences = function(){
       console.log(JSON.stringify($scope.filters));
+
+      // Save data to the current local store
+      localStorage.setItem("preferences", JSON.stringify($scope.filters));
     };
+
+    //pull values from localstorage should they exist
+    if(window.localStorage){
+      $scope.filters = JSON.parse(localStorage.getItem('preferences'));
+      $scope.$apply();
+    }
 
 }])
 
