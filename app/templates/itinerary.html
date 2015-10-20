@@ -16,6 +16,6 @@
         <li ng-repeat="message in date.messages track by $index">{{message.note}}</li>
       </ul>
     </div>
-    <p ng-if="!dates">There is currently nothing on your itinerary. Want to make a date? Find one on the selection list!</p>
+    <p ng-show="!dates.length">There is currently nothing on your itinerary. Want to make a date? Find one on the selection list!</p>
   </div>
 </div>
