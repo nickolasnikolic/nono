@@ -1,7 +1,7 @@
 nonoApp.controller('IndexController', ['$scope', '$state', 'LoverRegistryService', function($scope, $state, LoverRegistryService) {
   //initial settings
   $scope.googleLogin = true;
-  $scope.frozen = true;
+  $scope.frozen = false;
 
   //get credentials of google api
   hello.init({
