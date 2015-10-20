@@ -447,6 +447,8 @@ $app->post('/contact', function(){
       'to'      => 'nick@nono.dating',
       'subject' => 'nono.dating message',
       'text'    => $message));
+
+  echo 'done';
 });
 
 $app->run();
