@@ -386,11 +386,10 @@ nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 
 
               masterEventList = masterEventList.concat( askerEventsHolder, giverEventsHolder );
 
+              console.log('master events list is:');
               console.log(masterEventList);
 
               var formattedEventList = [];
-
-              //todo hack le`disgust but more work needed, etc
 
               _.each( masterEventList, function( element ){
                 formattedEventList.push( {
