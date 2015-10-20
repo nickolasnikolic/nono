@@ -268,7 +268,7 @@ nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', fun
 
     $scope.philter = function(e){
       //console.log('e is: ');
-      console.log(e);
+      //console.log(e);
       //if the gender matches the filter for neither or both ignore it
       if($scope.filters == undefined || $scope.filters.girl == $scope.filters.boy){
         //do nothing
@@ -305,7 +305,7 @@ nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', fun
         }
       }
       //if there is no radius match zip directly
-      if(e.zip === $scope.filters.zip){
+      if($scope.filters.zip && !$scope.filters.distance && e.zip == $scope.filters.zip){
           return false;
       }
       //if the distance matches the filter ignore it
@@ -313,7 +313,6 @@ nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', fun
         $.getJSON('../api/zipradius/' + $scope.filters.zip + '/' + $scope.filters.distance, function( response ){
           console.log(response);
           if(!$scope.filters.zip in response){
-            console.log('ooopsies');
             return false;
           }
         });
