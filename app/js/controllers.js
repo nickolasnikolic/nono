@@ -337,6 +337,10 @@ nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', fun
       return true;
     };
 
+    $scope.savePreferences = function(){
+      console.log(JSON.stringify($scope.filters));
+    };
+
 }])
 
 nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 'LoverRegistryService', function($scope, $state, $stateParams, LoverRegistryService) {
@@ -358,18 +362,9 @@ nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 
   //pull from database the records of dates and undateable days
   $.getJSON('../api/scheduling/' + loverUser)
       .success(function(data){
-        console.log('data is pulled for scheduling from the current lover, and it is: ');
-        console.log(data);
 
         askerDatableDaysString = data.datableDays[0].datable_days;
         askerEventsHolder = askerEventsHolder.concat( data.datesAsked, data.datesGiven );
-
-
-        console.log('askerDatableDaysString is: ');
-        console.log(askerDatableDaysString);
-
-        console.log('askerEventsHolder is: ');
-        console.log(askerEventsHolder);
 
         $.getJSON('../api/scheduling/' + loveInterest)
             .success(function(data){
