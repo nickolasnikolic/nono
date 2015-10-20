@@ -79,7 +79,7 @@ nonoApp.controller('HomeController', ['$scope', function($scope) {
   document.title = 'nono - home'; //set the page title
 }])
 
-nonoApp.controller('ProfileController', ['$scope', 'LoverRegistryService', function($scope, LoverRegistryService) {
+nonoApp.controller('ProfileController', ['$scope', '$state', 'LoverRegistryService', function($scope, $state, LoverRegistryService) {
   document.title = 'nono - profile'; //set the page title
   $scope.navigation = false;
   $scope.googleLogin = false;
@@ -97,7 +97,7 @@ nonoApp.controller('ProfileController', ['$scope', 'LoverRegistryService', funct
     console.log($scope.lover);
     $.post('../api/profile', $scope.lover)
       .success(function(data, status) {
-        console.log(data, status);
+        $state.go('subscribenotlogged');
       })
       .error(function(error, status) {
         console.log(error, status);
