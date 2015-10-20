@@ -700,10 +700,11 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
 
 }])
 
-nonoApp.controller('ContactController', ['$scope', function($scope) {
+nonoApp.controller('ContactController', ['$scope','LoverRegistryService', function($scope,LoverRegistryService) {
   document.title = 'nono - contact'; //set the page title
   $('#submitContact').click(function(){
     //push the message to the utility that sends email
+    $scope.message.sender = LoverRegistryService.userEmail;
     $.post('../api/contact', $scope.message)
       .success(function(data) {
         //do something about it

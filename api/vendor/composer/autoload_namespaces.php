@@ -8,5 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'Slim' => array($vendorDir . '/slim/slim'),
     'Requests' => array($vendorDir . '/rmccue/requests/library'),
-    'Mandrill' => array($vendorDir . '/mandrill/mandrill/src'),
+    'Mailgun\\Tests' => array($vendorDir . '/mailgun/mailgun-php/tests'),
+    'Mailgun' => array($vendorDir . '/mailgun/mailgun-php/src'),
 );

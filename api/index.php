@@ -1,6 +1,8 @@
 <?php
 require 'vendor/autoload.php';
 
+use Mailgun\Mailgun;
+
 error_reporting(-1);//tell me stuff
 
 $app = new \Slim\Slim();
@@ -430,13 +432,21 @@ $app->get('/zipradius/:zip/:radius',function($zip,$radius){
 
 $app->post('/contact', function(){
   //send message in content
+  $sender = $_POST['sender'];
   $message = $_POST['name'];
   $message .= $_POST['phone'];
   $message .= $_POST['message'];
 
-  //todo do something with this? shall we?
+  # First, instantiate the SDK with your API credentials and define your domain.
+  $mg = new Mailgun(getenv('MAILGUN_API_KEY'));
+  $domain = getenv('MAILGUN_DOMAIN');
 
-  echo json_encode($_POST);
+# Now, compose and send your message.
+  $mg->sendMessage($domain, array(
+      'from'    => $sender,
+      'to'      => 'nick@nono.dating',
+      'subject' => 'nono.dating message',
+      'text'    => $message));
 });
 
 $app->run();

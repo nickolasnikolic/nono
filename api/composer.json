@@ -1,7 +1,7 @@
 {
     "require": {
         "slim/slim": "~2.6",
-        "mandrill/mandrill": "~1.0",
+        "mailgun/mailgun-php":">=1.0",
         "rmccue/requests": ">=1.0"
     },
     "extra": {
