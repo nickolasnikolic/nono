@@ -1,6 +1,7 @@
 nonoApp.controller('IndexController', ['$scope', '$state', 'LoverRegistryService', function($scope, $state, LoverRegistryService) {
   //initial settings
   $scope.googleLogin = true;
+  $scope.frozen = false;
 
   //get credentials of google api
   hello.init({
@@ -17,11 +18,13 @@ nonoApp.controller('IndexController', ['$scope', '$state', 'LoverRegistryService
       //check the email against the database
       LoverRegistryService.userEmail = resource.email; //quick push it into registry before it escapes...
       $.getJSON( '../api/email/' + resource.email, function( response ){
-        console.log(response);
+
         if(response[0].user_id){
           LoverRegistryService.userId = response[0].user_id; //same for this user
-          console.log('LoverRegistry.userId is:');
-          console.log(LoverRegistryService.userId);
+          if(response[0].frozen > 0){
+            $scope.frozen = response[0].frozen;
+            return $state.go('homenotlogged');
+          }
           $state.go( 'selectionlogged' );
           $scope.navigation = true;
         }else{

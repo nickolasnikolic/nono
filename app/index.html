@@ -46,6 +46,7 @@
   <body class="container" ng-cloak ng-app="nono" ng-controller="IndexController">
     <header id="header" class="row">
       <h1 id="logo">nono.dating</h1>
+      <h2 ng-show="frozen">Your account seems to be frozen with an account value of {{frozen}}. If you believe this to be in error, please contact me at me@nick.cool</h2>
       <nav>
         <ul class="list-inline" ng-show="navigation">
           <li class="col-xs-pull-1" id="profile"><a>profile</a></li>

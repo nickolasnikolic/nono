@@ -19,7 +19,7 @@ $app->get('/email/:query', function( $query ){
 
   $db = new PDO( "mysql:host=$server;dbname=$dbname;charset=utf8", $username, $password);
   //get the lover from the db by email
-  $stmt = $db->prepare('SELECT user_id FROM lovers WHERE email = :email LIMIT 1');
+  $stmt = $db->prepare('SELECT user_id, frozen FROM lovers WHERE email = :email LIMIT 1');
   $stmt->bindParam( ':email', $query );
   $stmt->execute();
   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
