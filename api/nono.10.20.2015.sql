@@ -74,10 +74,8 @@ CREATE TABLE `lovers` (
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   UNIQUE KEY `user_id` (`user_id`),
   KEY `datableDays` (`datable_days`(1)),
-  KEY `frozen` (`frozen`),
-  FULLTEXT KEY `bio` (`bio`),
-  FULLTEXT KEY `bio_2` (`bio`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+  KEY `frozen` (`frozen`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
