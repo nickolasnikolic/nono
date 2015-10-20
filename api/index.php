@@ -7,8 +7,16 @@ $app = new \Slim\Slim();
 
 //search for an email of a lover and return a user id or falsey value
 $app->get('/email/:query', function( $query ){
+
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  $server = $url["host"];
+  $username = $url["user"];
+  $password = $url["pass"];
+  $dbname = substr($url["path"], 1);
+
+  $db = new PDO( "mysql:host=$server;dbname=$dbname;charset=utf8", $username, $password);
   //get the lover from the db by email
-  $db = new PDO('mysql:host=localhost;dbname=nono;charset=utf8', 'root', '');
   $stmt = $db->prepare('SELECT user_id FROM lovers WHERE email = :email LIMIT 1');
   $stmt->bindParam( ':email', $query );
   $stmt->execute();
@@ -22,8 +30,14 @@ $app->get('/home', function(){ echo 'u r here...'; }); //so far nothing for home
 
 //populate the form for a lover
 $app->get('/profile/:lover', function( $lover ){
-  //get the lover from the db
-  $db = new PDO('mysql:host=localhost;dbname=nono;charset=utf8', 'root', '');
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  $server = $url["host"];
+  $username = $url["user"];
+  $password = $url["pass"];
+  $dbname = substr($url["path"], 1);
+
+  $db = new PDO( "mysql:host=$server;dbname=$dbname;charset=utf8", $username, $password);
   $stmt = $db->prepare('SELECT * FROM lovers WHERE user_id = :user LIMIT 1');
   $stmt->bindParam( ':user', $lover );
   $stmt->execute();
@@ -55,10 +69,15 @@ $app->post('/profile', function(){
       $notFirstTime = true;
     }
   }
-  echo $datableDaysEnumString;
-  //signal ok to proceed
-  //set the lover in the db
-  $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
+
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  $server = $url["host"];
+  $username = $url["user"];
+  $password = $url["pass"];
+  $dbname = substr($url["path"], 1);
+
+  $db = new PDO( "mysql:host=$server;dbname=$dbname;charset=utf8", $username, $password);
   $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
   $stmt = $db->prepare('INSERT INTO lovers
                               ( email, gender, preference, age, education, zip, tagline, bio, tags, datable_days )
@@ -107,7 +126,14 @@ $app->post('/profile/:lover', function( $lover ){
   echo $datableDaysEnumString;
   //signal ok to proceed
   //set the lover in the db
-  $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  $server = $url["host"];
+  $username = $url["user"];
+  $password = $url["pass"];
+  $dbname = substr($url["path"], 1);
+
+  $db = new PDO( "mysql:host=$server;dbname=$dbname;charset=utf8", $username, $password);
   $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
   $stmt = $db->prepare('UPDATE lovers
                               set
@@ -142,7 +168,14 @@ $app->post('/profile/:lover', function( $lover ){
 
 $app->get('/selection/:notthisone', function($notthisone){
   //return the user stories for a gender
-  $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  $server = $url["host"];
+  $username = $url["user"];
+  $password = $url["pass"];
+  $dbname = substr($url["path"], 1);
+
+  $db = new PDO( "mysql:host=$server;dbname=$dbname;charset=utf8", $username, $password);
   $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
   $stmt = $db->prepare('SELECT * FROM lovers WHERE user_id != :notthisone LIMIT 500');
   $stmt->bindParam(':notthisone', $notthisone);
@@ -155,7 +188,14 @@ $app->get('/selection/:notthisone', function($notthisone){
 $app->get('/scheduling/:loveinterest', function( $loveinterest ){
   //display unavailable dates for a particular love interest
     //get datable days
-  $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  $server = $url["host"];
+  $username = $url["user"];
+  $password = $url["pass"];
+  $dbname = substr($url["path"], 1);
+
+  $db = new PDO( "mysql:host=$server;dbname=$dbname;charset=utf8", $username, $password);
   $stmt = $db->prepare('SELECT datable_days FROM lovers WHERE user_id = :lover');
   $stmt->bindParam(':lover', $loveinterest );
   $stmt->execute();
@@ -191,7 +231,14 @@ $app->post('/scheduling/:asker/:loveinterest', function( $asker, $loveinterest )
   //post the date interest
   $date = $_POST['date'];
 
-  $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  $server = $url["host"];
+  $username = $url["user"];
+  $password = $url["pass"];
+  $dbname = substr($url["path"], 1);
+
+  $db = new PDO( "mysql:host=$server;dbname=$dbname;charset=utf8", $username, $password);
   $stmt = $db->prepare('INSERT INTO romantic_dates (asker, giver, date_start) VALUES (:asker, :giver, :date);');
   $stmt->bindParam(':asker', $asker);
   $stmt->bindParam(':giver', $loveinterest);
@@ -202,7 +249,14 @@ $app->post('/scheduling/:asker/:loveinterest', function( $asker, $loveinterest )
 
 $app->get('/confirmation/:date', function( $date ){
   //get individual date and display members and date time
-  $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  $server = $url["host"];
+  $username = $url["user"];
+  $password = $url["pass"];
+  $dbname = substr($url["path"], 1);
+
+  $db = new PDO( "mysql:host=$server;dbname=$dbname;charset=utf8", $username, $password);
   $stmt = $db->prepare('SELECT * FROM romantic_dates WHERE romantic_date_id = :date;');
   $stmt->bindParam(':date', $date);
 
@@ -218,7 +272,14 @@ $app->get('/confirmation/:date', function( $date ){
 
 $app->get('/itinerary/:lover', function($lover){
   //just display itinerary page
-  $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  $server = $url["host"];
+  $username = $url["user"];
+  $password = $url["pass"];
+  $dbname = substr($url["path"], 1);
+
+  $db = new PDO( "mysql:host=$server;dbname=$dbname;charset=utf8", $username, $password);
   $stmt = $db->prepare('SELECT *
                         FROM romantic_dates
                         WHERE date_start BETWEEN NOW() - INTERVAL 31 DAY AND NOW() + INTERVAL 90 DAY AND
@@ -239,7 +300,14 @@ $app->get('/itinerary/:lover', function($lover){
 
 $app->get('/itinerary/messages/:dateid', function($dateid){
   //just display itinerary page
-  $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  $server = $url["host"];
+  $username = $url["user"];
+  $password = $url["pass"];
+  $dbname = substr($url["path"], 1);
+
+  $db = new PDO( "mysql:host=$server;dbname=$dbname;charset=utf8", $username, $password);
   $stmt = $db->prepare('SELECT * FROM lovenotes WHERE note_id = :dateid;');
   $stmt->bindParam(':dateid', $dateid);
 
@@ -256,7 +324,14 @@ $app->post('/itinerary/messages/:dateid', function( $dateid ){
   $note = $_POST['message'];
 
   //send a love note
-  $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  $server = $url["host"];
+  $username = $url["user"];
+  $password = $url["pass"];
+  $dbname = substr($url["path"], 1);
+
+  $db = new PDO( "mysql:host=$server;dbname=$dbname;charset=utf8", $username, $password);
   $stmt = $db->prepare('INSERT INTO lovenotes (note_id, note) VALUES ( :dateid, :note );');
   $stmt->bindParam(':dateid', $dateid);
   $stmt->bindParam(':note', $note);
@@ -296,7 +371,14 @@ $app->post('/itinerary/date/:mode/:id', function( $mode, $id ){
     }
 
     //send a love note
-    $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
+    $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+    $server = $url["host"];
+    $username = $url["user"];
+    $password = $url["pass"];
+    $dbname = substr($url["path"], 1);
+
+    $db = new PDO( "mysql:host=$server;dbname=$dbname;charset=utf8", $username, $password);
     $stmt = $db->prepare($sql);
 
     $stmt->bindParam(':who', $direction);
@@ -324,7 +406,14 @@ $app->post('/dispute/:mode', function( $mode ){
   }
 
   //send a love note
-  $db = new PDO('mysql:host=localhost;dbname=nono;', 'root', '');
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  $server = $url["host"];
+  $username = $url["user"];
+  $password = $url["pass"];
+  $dbname = substr($url["path"], 1);
+
+  $db = new PDO( "mysql:host=$server;dbname=$dbname;charset=utf8", $username, $password);
   $stmt = $db->prepare($sql);
 
   $stmt->bindParam(':who', $id);
