@@ -78,12 +78,14 @@ nonoApp.controller('IndexController', ['$scope', '$state', 'LoverRegistryService
 nonoApp.controller('HomeController', ['$scope', function($scope) {
   document.title = 'nono - home'; //set the page title
   $scope.userCount = 0;
-  $.get('../api/home')
-      .success(function(data){
-        console.log(data);
-        $scope.userCount = JSON.parse(data);
-        $scope.$apply();
-      });
+  $(document).ready(function(){
+    $.getJSON('../api/home')
+        .success(function(data){
+          console.log(data);
+          $scope.userCount = JSON.parse(data);
+          $scope.$apply();
+        });
+  });
 }])
 
 nonoApp.controller('ProfileController', ['$scope', '$state', 'LoverRegistryService', function($scope, $state, LoverRegistryService) {
