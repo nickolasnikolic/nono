@@ -312,7 +312,7 @@ nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', fun
       if($scope.filters.zip && $scope.filters.distance && $scope.filters.distance > 1 && $scope.filters.distance < 1000){
         $.getJSON('../api/zipradius/' + $scope.filters.zip + '/' + $scope.filters.distance, function( response ){
           console.log(response);
-          if(!$scope.filters.zip in response){
+          if(!e.zip in response){
             return false;
           }
         });
