@@ -81,7 +81,7 @@ nonoApp.controller('HomeController', ['$scope', '$http', function($scope, $http)
   $http.get('../api/home')
         .then(function(data){
           console.log(data);
-          $scope.userCount = data.data[0].counted;
+          $scope.userCount = data.data[0].COUNTED;
         },
         function(error){
           console.log(error);
