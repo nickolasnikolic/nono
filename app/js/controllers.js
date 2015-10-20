@@ -349,6 +349,8 @@ nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', fun
       if(localStorage.getItem('preferences') != '') {
         $scope.filters = JSON.parse(localStorage.getItem('preferences'));
         $scope.$apply();
+      }else{
+        $scope.filters = {};
       }
     }
 

@@ -164,8 +164,6 @@ $app->post('/profile/:lover', function( $lover ){
   $stmt->bindParam( ':userid', $lover );
 
   $stmt->execute();
-  //squirt it at the client
-  echo json_encode( $_POST );
 });
 
 $app->get('/selection/:notthisone', function($notthisone){
@@ -179,7 +177,7 @@ $app->get('/selection/:notthisone', function($notthisone){
 
   $db = new PDO( "mysql:host=$server;dbname=$dbname;charset=utf8", $username, $password);
   $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-  $stmt = $db->prepare('SELECT * FROM lovers WHERE user_id != :notthisone LIMIT 500');
+  $stmt = $db->prepare('SELECT * FROM lovers WHERE user_id != :notthisone AND frozen = 0 LIMIT 500');
   $stmt->bindParam(':notthisone', $notthisone);
   $stmt->execute();
   $result = $stmt->fetchAll();
