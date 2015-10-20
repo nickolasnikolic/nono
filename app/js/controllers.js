@@ -390,8 +390,6 @@ nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 
 
               var formattedEventList = [];
 
-              //todo hack le`disgust but more work needed, etc
-
               _.each( masterEventList, function( element ){
                 formattedEventList.push( {
                   'id': element.romantic_date_id,
