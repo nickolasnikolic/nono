@@ -77,7 +77,7 @@ nonoApp.controller('IndexController', ['$scope', '$state', 'LoverRegistryService
 
 nonoApp.controller('HomeController', ['$scope', function($scope) {
   document.title = 'nono - home'; //set the page title
-
+  $scope.userCount = 0;
   $.getJSON('../api/home')
       .success(function(data){
         console.log(data);
