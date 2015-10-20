@@ -444,7 +444,7 @@ $app->post('/contact', function(){
 # Now, compose and send your message.
   $mg->sendMessage($domain, array(
       'from'    => $sender,
-      'to'      => 'nick@nono.dating',
+      'to'      => 'me@nick.cool',
       'subject' => 'nono.dating message',
       'text'    => $message));
 
