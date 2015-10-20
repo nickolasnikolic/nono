@@ -346,8 +346,10 @@ nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', fun
 
     //pull values from localstorage should they exist
     if(window.localStorage){
-      $scope.filters = JSON.parse(localStorage.getItem('preferences'));
-      $scope.$apply();
+      if(localStorage.getItem('preferences') != '') {
+        $scope.filters = JSON.parse(localStorage.getItem('preferences'));
+        $scope.$apply();
+      }
     }
 
 }])
