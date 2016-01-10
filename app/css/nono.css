@@ -122,9 +122,22 @@ nav{/*ul removed*/
   height: 350px;
 }
 
+.sideAd{
+  position: fixed;
+  top: 10em;
+  right: 1em;
+}
+
+.footAd{
+
+}
+
 @media all and (min-width: 992px){
   #filters{
     position: fixed;
+  }
+  .mobileAd{
+    display: none;
   }
 }
 @media all and (max-width: 991px){
@@ -133,5 +146,11 @@ nav{/*ul removed*/
   }
   #filters{
     padding: 3.21em;
+  }
+  .sideAd{
+    display: none;
+  }
+  .footAd{
+    display: none;
   }
 }
