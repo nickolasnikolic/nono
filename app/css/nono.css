@@ -133,7 +133,7 @@ nav{/*ul removed*/
 }
 
 #mc_embed_signup .mc-field-group input{
-  width: 85%;
+  width: 85% !important;
 }
 
 @media all and (min-width: 992px){
