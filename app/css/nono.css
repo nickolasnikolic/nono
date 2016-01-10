@@ -129,7 +129,7 @@ nav{/*ul removed*/
 }
 
 .footAd{
-
+  display: none;
 }
 
 @media all and (min-width: 992px){
