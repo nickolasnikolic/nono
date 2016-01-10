@@ -132,10 +132,6 @@ nav{/*ul removed*/
   display: none;
 }
 
-#mc_embed_signup .mc-field-group input{
-  width: 85% !important;
-}
-
 @media all and (min-width: 992px){
   #filters{
     position: fixed;
