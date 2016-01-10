@@ -714,10 +714,13 @@ nonoApp.controller('ContactController', ['$scope','LoverRegistryService', functi
       .success(function(data) {
         //do something about it
         $scope.return = true;
+        alert('Message sent.');
+        $('.form-control').val('');
       })
       .error(function(error) {
         //do something about it
         console.log(error);
+          alert('Try again. There has been some error in sending. If any further problems occur, email info@nick.cool.');
       });
   });
 }]);
