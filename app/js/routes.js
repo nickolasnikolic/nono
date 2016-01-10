@@ -21,15 +21,6 @@ var nonoApp = angular.module('nono', ['ui.router', 'ngSanitize', 'angular.filter
           }
         })
 
-      .state('subscribenotlogged', {
-        url: '/subscribe',
-        templateUrl: 'templates/subscribe.html',
-        controller: 'SubscriptionController',
-        onEnter: function($state) {
-          console.log('subscribe');
-        }
-      })
-
       .state('contact', {
         url: '/contact',
         templateUrl: 'templates/contact.html',

@@ -107,10 +107,8 @@ nonoApp.controller('ProfileController', ['$scope', '$state', 'LoverRegistryServi
     console.log($scope.lover);
     $.post('../api/profile', $scope.lover)
       .success(function(data, status) {
-          if($scope.lover.code == 'freelove'){
-            $state.go('selectionlogged');
-          }
-        $state.go('subscribenotlogged');
+          //get into the interface
+          $state.go('selectionlogged');
       })
       .error(function(error, status) {
         console.log(error, status);
