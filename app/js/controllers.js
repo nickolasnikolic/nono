@@ -107,10 +107,8 @@ nonoApp.controller('ProfileController', ['$scope', '$state', 'LoverRegistryServi
     console.log($scope.lover);
     $.post('../api/profile', $scope.lover)
       .success(function(data, status) {
-          if($scope.lover.code == 'freelove'){
-            $state.go('selectionlogged');
-          }
-        $state.go('subscribenotlogged');
+          //get into the interface
+          $state.go('selectionlogged');
       })
       .error(function(error, status) {
         console.log(error, status);
@@ -716,10 +714,13 @@ nonoApp.controller('ContactController', ['$scope','LoverRegistryService', functi
       .success(function(data) {
         //do something about it
         $scope.return = true;
+        alert('Message sent.');
+        $('.form-control').val('');
       })
       .error(function(error) {
         //do something about it
         console.log(error);
+          alert('Try again. There has been some error in sending. If any further problems occur, email me@nick.cool.');
       });
   });
 }]);
