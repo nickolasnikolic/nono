@@ -269,7 +269,7 @@ nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', fun
   $.get('../api/selection/' + LoverRegistryService.userId)
     .success(function(data) {
       $scope.lovers = JSON.parse(data);
-      $scope.$apply();
+      //$scope.$apply();
     })
     .error(function(error) {
       console.log(error);
