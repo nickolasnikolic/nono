@@ -415,7 +415,6 @@ nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 
 
               //translate dateable days string back into a usable format
               var datableDays = {};
-              var datableDaysArray = [];
 
               //monday
               if( giverDatableDaysString.indexOf( 'monday' ) != -1 ){
@@ -488,7 +487,7 @@ nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 
                 datableDays.sunday.dinner = true;
               }
 
-              datableDaysArray = _.pairs(datableDays);
+              var datableDaysArray = _.pairs(datableDays);
 
               var formattedDatableDaysArray = [];
 
