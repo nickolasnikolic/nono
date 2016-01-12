@@ -376,8 +376,6 @@ nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 
   var loverUser = LoverRegistryService.userId;
   var loveInterest = $stateParams.loveInterest;
 
-    console.log(loverUser);
-
   var askerEventsHolder = [];
   var giverEventsHolder = [];
 
@@ -393,8 +391,6 @@ nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 
 
         $.getJSON('../api/scheduling/' + loveInterest)
             .success(function(data){
-              console.log('data is pulled from loveInterest for scheduling, and it is: ');
-              console.log(data);
 
               if(data.datableDays[0].datable_days != null) { //in cases where datable days have not been set
                 giverDatableDaysString = data.datableDays[0].datable_days.toString();
