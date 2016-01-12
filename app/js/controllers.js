@@ -376,6 +376,8 @@ nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 
   var loverUser = LoverRegistryService.userId;
   var loveInterest = $stateParams.loveInterest;
 
+    console.log(loverUser);
+
   var askerEventsHolder = [];
   var giverEventsHolder = [];
 
