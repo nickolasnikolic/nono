@@ -572,8 +572,6 @@ nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 
               //form the final listing
               var finalEventList = formattedEventList.concat(formattedDatableDaysArray);
 
-              //console.log(finalEventList);
-              //console.log($('#calendar'));
               //display it
               $('#calendar').fullCalendar({
                 theme: false,
