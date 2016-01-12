@@ -285,7 +285,7 @@ nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', fun
         return false;
       }
 
-      if($scope.filters.theirPreference == undefined ) {
+      if($scope.filters.theirPreference == undefined || $scope.filters.theirPreference == null ) {
         //do nothing
       }else if($scope.filters.theirPreference != e.preference){
         return false;
