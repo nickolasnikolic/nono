@@ -16,8 +16,6 @@
 	}
 })(function($, moment) {
 
-;;
-
 var fc = $.fullCalendar = { version: "2.3.1" };
 var fcViews = fc.views = {};
 

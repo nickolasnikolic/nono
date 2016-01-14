@@ -56,7 +56,6 @@ var nonoApp = angular.module('nono', ['ui.router', 'ngSanitize', 'angular.filter
         controller: 'SchedulingController',
         onEnter: function($state) {
           console.log('scheduling');
-          $('#calendar').fullCalendar( 'render' );
         }
       })
 
