@@ -140,6 +140,22 @@ nav{/*ul removed*/
     display: none;
   }
 }
+
+@media all and (min-width: 992px) and (max-device-width: 1549px){
+  #filters{
+    position: fixed;
+  }
+  .mobileAd{
+    display: none;
+  }
+  .sideAd{
+    display: none;
+  }
+  .footAd{
+    display: block;
+  }
+}
+
 @media all and (max-width: 991px){
   .lover{
     padding: 2em;
