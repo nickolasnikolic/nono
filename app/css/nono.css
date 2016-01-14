@@ -141,7 +141,7 @@ nav{/*ul removed*/
   }
 }
 
-@media all and (min-width: 992px) and (max-device-width: 1549px){
+@media all and (min-width: 992px) and (max-width: 1549px){
   #filters{
     position: fixed;
   }
