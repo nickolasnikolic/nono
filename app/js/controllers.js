@@ -573,46 +573,48 @@ nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 
               var finalEventList = formattedEventList.concat(formattedDatableDaysArray);
 
               //display it
-              $('#calendar').fullCalendar({
-                theme: false,
-                defaultView: 'agendaWeek',
-                header: {
-                  center: 'agandaWeek, Month',
-                  right: 'prev,next,today'
-                },
-                buttonText: {
-                  today: 'today',
-                  month: 'month',
-                  week: 'week',
-                  day: 'day',
-                  next: '>',
-                  prev: '<'
-                },
-                overlap: false,
-                editable: false,
-                eventLimit: true, // allow "more" link when too many events
-                eventBackgroundColor: 'black',
-                eventBorderColor: 'black',
+              function displayCalendar() {
+                  $('#calendar').fullCalendar({
+                      theme: false,
+                      defaultView: 'agendaWeek',
+                      header: {
+                          center: 'agandaWeek, Month',
+                          right: 'prev,next,today'
+                      },
+                      buttonText: {
+                          today: 'today',
+                          month: 'month',
+                          week: 'week',
+                          day: 'day',
+                          next: '>',
+                          prev: '<'
+                      },
+                      overlap: false,
+                      editable: false,
+                      eventLimit: true, // allow "more" link when too many events
+                      eventBackgroundColor: 'black',
+                      eventBorderColor: 'black',
 
-                events: finalEventList,
+                      events: finalEventList,
 
-                dayClick: function(date, evt, view) {
+                      dayClick: function (date, evt, view) {
 
-                  var suppository = {};
+                          var suppository = {};
 
-                  suppository.asker = LoverRegistryService.userId;
-                  suppository.giver = $stateParams.loveInterest;
-                  suppository.date = date.format('YYYY-MM-DD HH:[00]:[00]');
+                          suppository.asker = LoverRegistryService.userId;
+                          suppository.giver = $stateParams.loveInterest;
+                          suppository.date = date.format('YYYY-MM-DD HH:[00]:[00]');
 
-                  LoverRegistryService.userDate = suppository;
+                          LoverRegistryService.userDate = suppository;
 
-                  $.post( '../api/scheduling/' + LoverRegistryService.userId + '/' + $stateParams.loveInterest, suppository)
-                      .success(function(data){
-                        $state.go('confirmationlogged');
-                      });
-                }
-              });
-
+                          $.post('../api/scheduling/' + LoverRegistryService.userId + '/' + $stateParams.loveInterest, suppository)
+                              .success(function (data) {
+                                  $state.go('confirmationlogged');
+                              });
+                      }
+                  });
+              }
+              setTimeout(displayCalendar, 1000);
             })
             .error(function(error){
               console.log('There has been an error in getting loveInterests dates, and it is...:');
